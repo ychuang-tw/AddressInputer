@@ -1,0 +1,730 @@
+  @charset "UTF-8";
+
+
+  /* 共用 */
+  body {overflow-x: hidden;}
+  .tag {color: #fff; padding: 0.1rem 0.4rem; margin-left: 0.2rem; margin-top: -2px; line-height: 1.2; font-size: 0.75rem; border-radius: 4px; border: 1px solid #209cff; vertical-align: middle;}
+  .tag.tag-blue-trans {background: transparent; border: 1px solid #209cff; color: #209cff;}
+  .tag.tag-gray {background: #a1a1a1; border: 1px solid #a1a1a1;}
+  .tag.tag-gray-trans {background: transparent; border: 1px solid #a1a1a1; color: #a1a1a1;}
+  .tag.tag-orange {background: #ff874d; border: 1px solid #ff874d;}
+  .tag.tag-orange-trans {background: transparent; border: 1px solid #ff874d; color: #ff874d;}
+  .tag.tag-red {background: #e30; border: 1px solid #e30;}
+  .tag.tag-red-trans {background: transparent; border: 1px solid #e30; color: #e30;}
+  .tag.tag-white {background: #fff; border: 1px solid #ccc; color: #999;}
+  .tag.tag-white-trans {background: transparent; border: 1px solid #fff; color: #fff;}
+  .tag.tag-pink {background: #ff40b0; border: 1px solid #ff40b0;}
+  .tag.tag-pink-trans {background: transparent; border: 1px solid #ff40b0; color: #ff40b0;}
+  .tag.tag-yellow {background: #FCAF15; border: 1px solid #FCAF15;}
+  .tag.tag-yellow-trans {background: transparent; border: 1px solid #FCAF15; color: #FCAF15;}
+  .tag.tag-navy {background: #0267B9; border: 1px solid #0267B9;}
+  .tag.tag-navy-trans {background: transparent; border: 1px solid #0267B9; color: #0267B9;}
+  .button.button-gray {background: none; color: #666; border: 1px solid rgba(0, 0, 0, 0.3);}
+  .card.row-reverse {flex-direction: row-reverse;}
+  .card .card-arena {position: absolute; top: 1rem; left: 1rem;}
+  .card .card-arena h3 {font-size: 1.1rem; font-weight: bold; color: #fff; line-height: 1.3; margin: 0.7rem 0;}
+  .card .card-arena .card-arena-price {position: absolute; top: 130px;font-size: 1rem; font-family: sans-serif; color: #fff; line-height: 1; white-space: nowrap;}
+  .card .card-arena .card-arena-price span {font-size: 1.9rem; margin-right: 4px;}
+  .card .card-arena .card-arena-period {position: absolute; top: 200px;}
+  .card .card-arena .card-only-price {position: absolute; top: 130px;font-size: 1rem; font-family: sans-serif; color: #fff; line-height: 1; white-space: nowrap;}/*20211123 The CSS Adjust for Version Mobile of ProgramCard Component */
+  .card .card-arena .card-only-price span {font-size: 1.9rem; margin-right: 4px;}/*20211123 The CSS Adjust for Version Mobile of ProgramCard Component */
+  .card .card-link {color: #333; padding-bottom: 1rem;}
+  .card .card-link:hover {text-decoration: none;}
+  .card .card-link .card-img.bg {background-color: initial; background-size: cover; background-position: center top; background-repeat: no-repeat; min-height: auto; transform: scale(1); transition: all .4s;}
+  /*.card .card-link:hover .card-img.bg {transform: scale(1.06); transform-origin: center bottom; transition: all .4s;}*/
+  .card .card-link .card-text {/*position: absolute; left: 0; right: 0; */ font-size: 0.8rem; padding: 0.8rem 1rem 0 1rem; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; z-index: 19;}
+  .card.card-special .card-link {transform: scale(1); transition: all .4s;}
+  /* .card.card-special .card-link:hover {transform: scale(1.06); transform-origin: center center; transition: all .4s;} */
+  .card .card-func {margin-top: 1rem; text-align: center;}
+  .card .card-func .button {padding: .4em .8em; opacity: 1;}
+  .card .card-func .button:hover {background: #209cff; color: #fafafa; border: 1px solid #209cff; box-shadow: none;}
+  .card ul li { list-style: unset; }
+
+  /* 本頁右下浮動 */
+  #index-page #event-float {bottom: 240px!important;}
+  #index-page .btn-scroll-top {bottom: 150px;}
+  #index-page #btn-customer-service.btn-scroll-top {bottom: 150px;}
+  #index-page #btn-customer-service.btn-scroll-top.scrolling-down {bottom: 206px;}
+
+  /* 常用選單 */
+  .tab.icon-tab.pull-up.index-fast-menu {position: fixed; right: 0; width: 100%; bottom: 0; left: 0; height: 126px; top: auto; display: flex; flex-direction: column; align-items: flex-start; border-radius: 1rem 1rem 0 0; transform: translateX(0); transition: all 0.4s; z-index: 19; pointer-events: none; visibility: visible; opacity: 1;}
+  .tab.icon-tab.pull-up.index-fast-menu.close {height: 112px; transform: translateX(200px); transition: all 0.4s;}
+  .tab.icon-tab.pull-up.index-fast-menu a.fast-menu-switch  {background: #333; width: 60px; padding: 0.8rem 0.4rem; color: #fff; font-weight: bold; line-height: 1.3; border-radius: 10px 0 0 10px; box-shadow: 2px 8px 6px #aaa; display: flex; flex-direction:column; align-items: center; pointer-events: all; display: none;}
+  .tab.icon-tab.pull-up.index-fast-menu a.fast-menu-switch:hover {background: #4d4d4d; text-decoration: none;}
+  .tab.icon-tab.pull-up.index-fast-menu a.fast-menu-switch span {background: #fff; border-radius: 50%; padding: 0.2rem 0; color: #333; width: 20px; height: 20px; margin-top: 0.4rem; display: flex; justify-content: center; align-items: center;}
+  .tab.icon-tab.pull-up.index-fast-menu a.fast-menu-switch span img {width: 20px; height: 20px; transform: rotate(0); transition: all 0.4s;}
+  .tab.icon-tab.pull-up.index-fast-menu.close a.fast-menu-switch span img {transform: rotate(180deg); transition: all 0.4s;}
+  .tab.icon-tab.index-fast-menu .tab-container {max-width: 100%; border-radius: 1rem 1rem 0 0; pointer-events: all;}
+  .tab.icon-tab.index-fast-menu .tab-container .tab {border-radius: 1rem 1rem 0 0;}
+  .tab.icon-tab.index-fast-menu .tab-container .in-page-tab-content {padding-bottom: .6rem;}
+  .tab.icon-tab.index-fast-menu .tab>.in-page-tab-switcher a {position: relative; padding: 0.3rem 0; margin: 0; width:  49%; border-bottom: 2px solid transparent; line-height: 1.6; display: flex; flex-direction: row; justify-content: center;}
+  .tab.icon-tab.index-fast-menu .tab>.in-page-tab-switcher a:first-child:after {position: absolute; content:'|'; color: #ccc; right: -4px;}
+  .tab.icon-tab.index-fast-menu .tab>.in-page-tab-switcher a.current {font-weight: bold; border-bottom: 2px solid #333;}
+  .tab.icon-tab.index-fast-menu .tab>.in-page-tab-switcher a#fast-menu-service.current {border-bottom: 2px solid #209cff;}
+  .tab.icon-tab.index-fast-menu .in-page-tab-content .tab-wrap {padding: .4rem 1.4rem 0 1.4rem;}
+  .tab.icon-tab.index-fast-menu .in-page-tab-content a {position: relative; padding: 0.4rem 0.4rem 0 0.5rem; margin-bottom: 0.2rem; font-weight: normal; color: #333; width: 50%;}
+  .tab.icon-tab.index-fast-menu .in-page-tab-content a .fast-icon {background-color: rgba(51,51,51,.05); width: 46px; height: 46px; margin-bottom: 0.2rem; display: flex; justify-content: center; align-items: center;border-radius: 50%; transition: all 0.4s;}
+  .tab.icon-tab.index-fast-menu .in-page-tab-content a:hover {color: #000;}
+  .tab.icon-tab.index-fast-menu .in-page-tab-content a:hover .fast-icon {background-color: rgba(255,135,77,.2); transition: all 0.4s;}
+  .tab.icon-tab.index-fast-menu .in-page-tab-content .tab-1 a:hover .fast-icon {background-color: rgba(32,156,255,.2); transition: all 0.4s;}
+  .tab.icon-tab.index-fast-menu .in-page-tab-content a img:before {content:''; position: absolute; background: rgba(51,51,51,.05); padding: 8px;top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;}
+  /* 211206 css 常用tab不滿4個時 & 常用tab 捲動隱藏 begin */
+  .tab.icon-tab.index-fast-menu .tab-container {max-width: initial; width: 100vw;} /* 常用tab不滿4個時仍 width:100vw */
+  .tab.icon-tab.index-fast-menu.nav-global-header {bottom: 0; z-index: 110;}
+  .tab.icon-tab.index-fast-menu.nav-global-header.scrolling-down {bottom: -130px;}
+  #event-float {bottom: 110px !important;}
+  .tab .tab-wrap::-webkit-scrollbar {display: none;} /*隱藏橫滑的scroll bar*/
+  /* 211206 css 常用tab不滿4個時 & 常用tab 捲動隱藏 end */
+  .index-fast-menu.tab.icon-tab .tab-wrap {padding: 0; justify-content: space-around;}
+  .index-fast-menu.tab.icon-tab .tab-wrap a img {width: 36px; height: 36px; margin: 0;}
+  .index-fast-menu .swiper-container {overflow: visible;}
+  /*.index-fast-menu .swiper-wrapper {overflow: hidden;}*/
+  .index-fast-menu .swiper-button-prev {background-color: #fff; background-size: 34%; left: -1.4rem; top: 0; margin-top: 0; height: 100%; background-image: url(/home/eShop/img/icon/arrow-prev-black.svg);}
+  .index-fast-menu .swiper-button-next {background-color: #fff; background-size: 34%; right: -1.4rem; top: 0; margin-top: 0; height: 100%; background-image: url(/home/eShop/img/icon/arrow-next-black.svg);}
+  .index-fast-menu .swiper-button-prev.swiper-button-disabled, .index-fast-menu .swiper-button-next.swiper-button-disabled {display: none;}
+  .index-fast-menu .swiper-pagination {opacity: 0; pointer-events:none;}
+  .index-fast-menu .swiper-button-next, .index-fast-menu .swiper-button-prev {outline: none;}
+   /*211206 css header改為固定 begin */
+   section#header header.scrolling-down { margin-top: 0;}
+   #sm_menu_ham.scrolling-down { margin-top: 0;}
+   /*211206 css header改為固定 end */
+   .sm_menu_outer.active{ z-index: 10000;}
+  /* KV slider */
+  .index-kv-top {background: rgb(187 221 248 / 30%); padding-top: 0; padding-bottom: 0; height: auto !important;}
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-pagination-bullet {
+    background: rgba(0, 0, 0, 0.2);
+    width: 8px;
+    height: 8px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000;
+    border-radius: 20px;
+    opacity: 1;
+    transition: all .4s;
+  }
+
+  .swiper-pagination-bullet-active {
+    color: #fff;
+    background: #007aff;
+  }
+
+  .mySwiper-kv {}
+  .mySwiper-kv .kv-category {}
+  .mySwiper-kv .kv-category ul {list-style: none; margin: 0; padding: 0; line-height: 1.6;}
+  .mySwiper-kv .kv-category ul li a {position: relative; padding: 0.6rem 1rem; margin: 0; color: #666; font-size: 1rem; font-weight: bold; width: auto; white-space: nowrap; overflow: hidden; text-decoration: none; border-bottom: 2px solid transparent; display: flex; justify-content: space-between; align-items: center;}
+  /*.mySwiper-kv .kv-category ul li:last-child a {border-bottom: 0;}*/
+  /*.mySwiper-kv .kv-category ul li a span {background: #333; border-radius: 50%; padding: 0; color: #fff; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center; transition: all .4s;}*/
+  /*.mySwiper-kv .kv-category ul li a span img {width: 18px; height: 18px;}*/
+  .mySwiper-kv .kv-category ul li a:hover {color: #666;}
+  .mySwiper-kv .kv-category ul li.active a {color: #209cff; border-color: #209cff; transition: all .4s; border-bottom: 0;}
+  .mySwiper-kv .kv-category ul li.active a span {background: #209cff; transition: all .4s; transition-delay: .2s;}
+  /*@supports((-webkit-background-clip: text) or (background-clip: text)) {
+    .mySwiper-kv .kv-category ul li a {color:transparent; background: linear-gradient(90deg, #209cff 50%, #2d2f31 50%); background-position-x: 100%; -webkit-background-clip: text; background-clip: text; background-size: 210% 100%; transition: background-position-x .25s,color .25s; transition-delay: 0;}
+    .mySwiper-kv .kv-category ul li.active a {color: transparent; background-position-x: 0; transition-delay: .15s;}
+  }*/
+  .mySwiper-kv .kv-category ul li a::before {position: absolute; bottom: -1px; width: 100%; height: 1px; content: ''; background: #209cff; -webkit-animation: article-line-anim .4s ease forwards; animation: article-line-anim .4s ease forwards;}
+  .mySwiper-kv .kv-category ul li a:hover::before {-webkit-animation: article-line-anim-reverse .4s ease forwards; animation: article-line-anim-reverse .4s ease forwards;}
+
+  .mySwiper-kv .kv-tab-inner {background: rgb(187 221 248 / 30%); height: 0; opacity: 0;}
+  .mySwiper-kv .kv-tab-inner.active {height: auto; padding-top: 1rem; opacity: 1; transition: all .4s;}
+  .mySwiper-kv .swiper-wrapper, .mySwiper-kv .swiper-slide a {padding-bottom: 1rem; border-radius: 1rem;}
+  .mySwiper-kv .swiper-container-horizontal>.swiper-pagination-bullets {bottom: 1rem;}
+  .mySwiper-kv .swiper-slide {overflow: hidden; border-radius: 20px;}
+  .mySwiper-kv .swiper-slide a {width: 100%; height: 0; padding-bottom: 145.77%; margin: 0 15px;}
+  .mySwiper-kv .swiper-slide a .cht-banner-bg-1 {border-radius: 1rem; transition: all .4s;}
+  .mySwiper-kv .swiper-slide a .cht-banner-bg-1 div {background-size: contain; background-repeat: no-repeat; background-position: center top; height: 0; padding-bottom: 145.77%; width: 100%; border-radius: 1rem;}
+
+  .mySwiper-kv .swiper-button-next, .mySwiper-kv .swiper-container-rtl .swiper-button-prev {left: -5%; top: auto; bottom: 0; border: 1px solid #aaa; border-radius: 50%; width: 32px; height: 32px; opacity: 0; transition: all .4s;}
+  .mySwiper-kv .swiper-button-prev, .mySwiper-kv .swiper-container-rtl .swiper-button-next {left: -18%; top: auto; bottom: 0; border: 1px solid #aaa; border-radius: 50%; width: 32px; height: 32px; opacity: 0; transition: all .4s;}
+  .mySwiper-kv:hover .swiper-button-next, .mySwiper-kv:hover .swiper-button-prev {opacity: 1; transition: all .4s;}
+  .mySwiper-kv .swiper-button-next:hover, .mySwiper-kv .swiper-container-rtl .swiper-button-prev:hover {background: #ddd; border: 1px solid transparent; transition: all .4s;}
+  .mySwiper-kv .swiper-button-prev:hover, .mySwiper-kv .swiper-container-rtl .swiper-button-next:hover {background: #ddd; border: 1px solid transparent; transition: all .4s;}
+  .mySwiper-kv .swiper-button-prev:after, .mySwiper-kv .swiper-container-rtl .swiper-button-next:after, .mySwiper-kv .swiper-button-next:after, .mySwiper-kv .swiper-container-rtl .swiper-button-prev:after {font-size: 0.7rem; color: #333; font-weight: bold;}
+  .mySwiper-kv .swiper-slide .cht-banner-container {position: absolute; top: 18rem; left: 2.4rem; text-align: left; display: flex;}
+  .mySwiper-kv .swiper-slide .cht-banner-container .cht-banner-img {max-width: 50%; margin-left: 1.6rem;}
+  .mySwiper-kv .swiper-slide .cht-banner-container .h4.is-subtitle{color: #fff; font-size: 1rem; margin-bottom: 1rem; line-height: 1.1;}
+  .mySwiper-kv .swiper-slide .cht-banner-container .h1{color: #fff; font-size: 1.6rem; line-height: 1.2;}
+  .mySwiper-kv .swiper-slide .cht-banner-container .button {background: none; color: #fff; padding: 0.4rem 1.2rem; margin-top: 0;border: 2px solid #fff;}
+  /*.mySwiper-kv.swiper-container-horizontal>.swiper-pagination-bullets, .mySwiper-kv .swiper-pagination-custom, .mySwiper-kv .swiper-pagination-fraction {left: -14%; top: auto; bottom: 6px; font-size: 0.7rem; width: 85px;}
+  .mySwiper-kv .swiper-container-horizontal>.swiper-pagination-bullets, .mySwiper-kv .swiper-pagination-custom, .mySwiper-kv .swiper-pagination-fraction {left: calc(50% - 680px); top: auto; bottom: 4px; width: 210px;}*/
+  .mySwiper-kv .kv-tab-inner .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet:last-child {display: none;}
+  .my-bullet-active {background: #333; width: 40px; border-radius: 20px;}
+  .mySwiper-kv .my-bullet-active {position: relative; background: rgba(0, 0, 0, 0.2); /*-webkit-animation: pagination-anim .4s ease forwards; animation: pagination-anim .4s ease forwards;*/}
+  .mySwiper-kv .my-bullet-active:after {position: absolute; content: ''; top: 0; left: 0; height: 8px; border-radius: 20px; z-index: 29; background: #333; -webkit-animation: pagination-anim 8s ease forwards; animation: pagination-anim 8s ease forwards;}
+
+  /* kv-tab-pagination-animate */
+    @-webkit-keyframes pagination-anim {
+      0% {
+          width: 0;
+          opacity: .3;
+          transform-origin: left;
+      }
+      100% {
+          width: 40px;
+          opacity: 1;
+          transform-origin: left;
+      }
+  }
+
+  @keyframes pagination-anim {
+      0% {
+          width: 0;
+          opacity: .3;
+          transform-origin: left;
+      }
+      100% {
+          width: 40px;
+          opacity: 1;
+          transform-origin: left;
+      }
+  }
+
+  /* kv-tab-line-animate */
+  @-webkit-keyframes article-line-anim {
+      0% {
+          transform: scaleX(1);
+          transform-origin: right
+      }
+      100% {
+          transform: scaleX(0);
+          transform-origin: right
+      }
+  }
+
+  @keyframes article-line-anim {
+      0% {
+          transform: scaleX(1);
+          transform-origin: right
+      }
+      100% {
+          transform: scaleX(0);
+          transform-origin: right
+      }
+  }
+
+  @-webkit-keyframes article-line-anim-reverse {
+      0% {
+          transform: scaleX(0);
+          transform-origin: left
+      }
+      100% {
+          transform: scaleX(1);
+          transform-origin: left
+      }
+  }
+
+  @keyframes article-line-anim-reverse {
+      0% {
+          transform: scaleX(0);
+          transform-origin: left
+      }
+      100% {
+          transform: scaleX(1);
+          transform-origin: left
+      }
+  }
+
+  /* 熱門商品 */
+  .hot-product-section {position: relative; background: none; padding-bottom: 1.6rem; width: 100%; height: auto; right: auto; left: auto; bottom: auto; margin-top: 20px; visibility: visible; display: block; opacity: 1; transition: all 1.6s;}
+
+  .hot-product-section .h2 {font-size: 1.8rem; font-weight: bold !important;}
+  .hot-product-section .container {width: auto; max-width: initial;}
+  .hot-product-section .container.without-padding {display: flex; align-items: center; padding-bottom: 0; padding-left: 1rem;}
+  .hot-product-section .section-title-area {padding-bottom: 0 !important; padding-top: 8px !important; margin-right: 1rem;}
+  .hot-product-section .hot-more a {position: relative; font-size: .7rem; font-weight: bold; border: 1px solid #999; padding: 0.3rem .8rem; border-radius: 1rem;}
+  .hot-product-section .hot-more a:hover {color: #333; border: 1px solid #333;}
+  .hot-product-section .hot-more a:after {content: '>'; font-family: cursive; margin-left: 4px;}
+  .hot-product-section .swiper-container {overflow-x: hidden; padding: .2rem 0 2.2rem 1rem;}
+  .hot-product-section .swiper-hot-product {padding-right: 1rem;}
+  .hot-product-section .mySwiper-hot-product {padding: 0;}
+  /*.hot-product-section .swiper-hot-product {background: #fff; padding: 1rem; -webkit-box-shadow: 0rem 0.2rem 0.6rem rgba(0, 0, 0, 0.25); box-shadow: 0rem 0.2rem 0.6rem rgb(0 0 0 / 25%); border-radius: .8rem; overflow-x: hidden;}*/
+  .hot-product-section .swiper-hot-pagination {position: absolute; text-align: center; width: 100%; left: 0; bottom: 0;}
+  .hot-product-section .swiper-pagination-bullet {margin: 0 4px;}
+  .hot-product-section .swiper-slide {width: 250px;}
+  .hot-product-section .card-wrapper {padding: .3rem .4rem .3rem .4rem;}
+  .hot-product-section .card.product.like-hidden {width: 250px; height: 340px; padding-bottom: 0; -webkit-box-shadow: 0rem 0rem 0.6rem rgba(0, 0, 0, 0.25); box-shadow: 0rem 0rem 0.6rem rgb(0 0 0 / 25%);}
+  .hot-product-section .card .card-action {right: .8rem; top: .8rem; z-index: 9;}
+  .hot-product-section .card .card-action .badge {height: 56px; width: 56px; background-color: transparent; background-repeat: no-repeat; box-shadow: none; transform: scale(1); font-size: 16px; border: 0; display: flex; justify-content: center; align-items: center;}
+  .hot-product-section .card.product .card-text {padding: .5rem;}
+  .hot-product-section .card.product .card-text .h5 {max-height: 2.4rem;}
+  .hot-product-section .card.product .card-text .sub-content {margin-bottom: 0.2rem;}
+  .hot-product-section .card-text .h5 .product-model {-webkit-line-clamp: 1; text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical;}
+  .hot-product-section .product-brand {display: block; color: #999; font-size: 0.75rem;}
+  .hot-product-section .tags-block {margin-bottom: 0.6rem; line-height: 1;}
+  .hot-product-section .tag {padding: 0.1rem 0.3rem; margin-left: 0.2rem; margin-top: -2px; line-height: 1.2; font-size: 0.6rem; border-radius: 1rem; vertical-align: middle;}
+  /*.hot-product-section .tag.tag-white {background: #fff; border: 1px solid #ccc; color: #999;}
+  .hot-product-section .tag.tag-orange {border: 1px solid #ff874d;}
+  .hot-product-section .tag.tag-gray {background: #a1a1a1; border: 1px solid #a1a1a1; color: #fff;}*/
+
+  .hot-product-section .card.product .card-img {width: 80%;}
+  .hot-product-section .card.product .card-img img {margin: 0 auto;}
+
+    /* 主打優惠 */
+  .leading-discount-section {position: relative; background: none; padding-bottom: 1.6rem; width: 100%; height: auto; left: auto; bottom: auto; top: auto; right: auto; margin-top: 20px; opacity: 1; visibility: visible; display: block; transition: all 1.6s;}
+  .leading-discount-section .h2 {font-size: 1.8rem; font-weight: bold !important;}
+  .leading-discount-section .container {width: auto; max-width: initial;}
+  .leading-discount-section .container.without-padding {display: flex; align-items: center; padding-bottom: 0.4rem; padding-left: 1rem;}
+  .leading-discount-section .section-title-area {padding-bottom: 0 !important; padding-top: 8px !important; margin-right: 1rem;}
+  .leading-discount-section .hot-more a {position: relative; font-size: .7rem; font-weight: bold; border: 1px solid #999; padding: 0.3rem .8rem; border-radius: 1rem;}
+  .leading-discount-section .hot-more a:hover {color: #333; border: 1px solid #333;}
+  .leading-discount-section .hot-more a:after {content: '>'; font-family: cursive; margin-left: 4px;}
+  .leading-discount-section .swiper-container {overflow-x: hidden;}
+  .leading-discount-section .swiper-leading-discount {padding-right: 2rem; padding-bottom: .6rem;}
+  .leading-discount-section .swiper-wrapper {width: auto; padding-left: 1rem; padding-right: 1rem;}
+  .leading-discount-section .swiper-slide {width: auto;}
+  .leading-discount-section .mySwiper-leading-discount {padding: 0;}
+  /* .leading-discount-section .swiper-leading-discount {overflow-x: hidden;} */
+  .leading-discount-section .swiper-leading-pagination {position: relative; text-align: center; width: 100%; bottom: 0;}
+  .leading-discount-section .swiper-pagination-bullet {margin: 0 4px;}
+  .leading-discount-section .card:hover { -webkit-box-shadow: 0rem 0.4rem 0.8rem rgb(0 0 0 / 30%); box-shadow: 0rem 0.4rem 0.8rem rgb(0 0 0 / 30%); }
+  .leading-discount-section .card .card-arena {position: relative; top: 0; left: 0; text-align: center;}
+  .leading-discount-section .card .card-arena h3 {color: #333; font-size: 1rem; font-weight: normal; height: 52px; margin-top: 0.8rem; margin-bottom: 0.6rem; display: flex; justify-content: center; align-items: center; line-height: 1.4;}
+  .leading-discount-section .card .card-link {width: 250px; min-height: auto;}
+  .leading-discount-section .card .card-link:hover {text-decoration: none;}
+  .leading-discount-section .card-wrapper {width: auto; padding: .5rem .2rem .3rem .2rem; margin: 0;}
+  .leading-discount-section .card-link .card-img.bg {background-size: cover; height: 130px; padding-bottom: 0;}
+  .leading-discount-section .card .card-text {color: #333; font-size: 0.95rem; padding: 0 1rem; height: 68px; text-align: center; line-height: 1.4;}
+
+  @media screen and (max-width: 320px) {
+    .mySwiper-kv .swiper-slide .cht-banner-container {top: 12rem; }
+    .mySwiper-kv .swiper-slide .cht-banner-container .h4.is-subtitle {font-size: 0.8rem;}
+    .mySwiper-kv .swiper-slide .cht-banner-container .h1 {font-size: 1.2rem;}
+    .leading-discount-section .card .card-link {width: 270px; min-height: auto;}
+  }
+
+
+    /* 行動上網 - 一般 */
+  .mobile-service-section {position: relative; padding-bottom: 1.6rem;}
+  /*.mobile-service-section:hover ~ .mouse-follow {opacity: .6; transition: opacity .4s; z-index: 99;}*/
+  .mobile-service-section .h2 {font-size: 1.8rem; font-weight: bold !important;}
+  .mobile-service-section .card .card-link .card-img.bg {min-height: auto; padding-bottom: 160%;}
+  .mobile-service-section .card .card-link .card-arena {position: absolute; z-index: 9; top: 12.8rem; left: 1.2rem;}
+  .mobile-service-section .swiper-mobservice-with-mobile .card .card-link .card-text {display: none;}
+  .mobile-service-section .swiper-mobservice-with-mobile a {position: inherit !important; width: 250px !important; padding: 0 !important; padding-bottom: 159.9% !important; margin-bottom: 0 !important; }
+  .mySwiper-mobile-service .card-wrapper {width: auto; padding: .5rem .2rem .3rem .2rem; margin: 0;}
+  .mySwiper-mobile-service .swiper-wrapper {width: auto; padding-left: 1rem; padding-right: 1rem; padding-bottom: 2rem;}
+  .mySwiper-mobile-service .swiper-slide {width: auto;}
+  .mySwiper-mobile-service .swiper-slide .card {-webkit-box-shadow: 0rem .2rem .6rem rgba(0, 0, 0, 0.25); box-shadow: 0rem .2rem .6rem rgb(0 0 0 / 25%);}
+  .mySwiper-mobile-service .swiper-slide .card:hover { -webkit-box-shadow: 0rem .4rem .8rem rgba(0, 0, 0, 0.30); box-shadow: 0rem .4rem .8rem rgb(0 0 0 / 30%);}
+  .mySwiper-mobile-service .swiper-slide .card .card-link {width: 250px; height: 0; padding-bottom: 169.9%;}
+  .mobile-service-section .container.without-padding {display: flex; align-items: center; padding-bottom: 0; padding-left: 1rem;}
+  .mobile-service-section .section-title-area {padding-bottom: 0 !important; padding-top: 8px !important; margin-right: 1rem;}
+  .mobile-service-section .net-more a {position: relative; font-size: .7rem; font-weight: bold; border: 1px solid #999; padding: 0.3rem .8rem; border-radius: 1rem;}
+  .mobile-service-section .net-more a:hover {color: #333; border: 1px solid #333;}
+  .mobile-service-section .net-more a:after {content: '>'; font-family: cursive; margin-left: 4px;}
+  .mySwiper-mobile-service .mobile-category {margin-top: .2rem; margin-bottom: .4rem; border-bottom: 0;}
+  .mySwiper-mobile-service .mobile-tab-title {display: flex; list-style: none; margin: 0; padding-left: 1rem; line-height: 1.6;}
+  .mySwiper-mobile-service .mobile-tab-title li a {padding: 0.4rem 1.8rem; color: #333; font-size: 1rem; font-weight: bold; margin: 0 4px; text-decoration: none; border-radius: 20px; transition: all .4s;}
+  .mySwiper-mobile-service .mobile-tab-title li a:hover, .mySwiper-mobile-service .mobile-tab-title li.active a {background: #333; color: #fff; border: 0; transition: all .4s;}
+  .mySwiper-mobile-service .swiper-container {padding-right: 2rem; padding-bottom: 1rem;}
+  .mobile-category {background:  transparent;}
+
+  /* 行動上網 - 單門號 */
+  .mobile-service-section .swiper-mobservice-single .swiper-slide {width: 266px;}
+  .mobile-service-section .swiper-mobservice-single .card .card-link .card-img.bg {width: 250px; padding-bottom: 85%;}
+  .mobile-service-section .swiper-mobservice-single .card a {background-size: contain; height: 480px; padding-bottom: 0;}
+  .mobile-service-section .swiper-mobservice-single .card .card-link:hover .card-img.bg {transform: scale(1);}
+  .mobile-service-section .swiper-mobservice-single .card.card-special .card-link .card-img {height: 100%;}
+  .mobile-service-section .swiper-mobservice-single .card .card-arena {top: .6rem; right: 1rem; padding: 0; margin: 0; text-align: center;}
+  .mobile-service-section .swiper-mobservice-single .card .card-arena h3 {font-size: 1.1rem;}
+  .mobile-service-section .swiper-mobservice-single .card .card-link .card-text {padding: 0 .8rem; font-size: .9rem; font-weight: normal; -webkit-line-clamp: 5; min-height: 125px;}
+  .mobile-service-section .swiper-mobservice-single .card .card-arena .card-arena-price {top: 7.5rem; color: #ff874d; left: 0; right: 0; text-align: center;}
+  .mobile-service-section .swiper-mobservice-single .card .card-arena .card-arena-price span {font-size: 2.1rem;}
+  .mobile-service-section .swiper-mobservice-single .card .card-arena .card-arena-period {font-weight: bold; left: 0; right: 0; top: 9.6rem; text-align: center;}
+  .mobile-service-section .swiper-mobservice-single .card .card-link .card-func {position: absolute; left: 0; right: 0; bottom: 0; padding-top: .6rem; font-size: 1rem; height: 40px; border-top: 1px solid rgb(51 51 51 / 10%);}
+  .mobile-service-section .swiper-mobservice-single .card .card-link .card-func .card-more {color: #209cff;}
+  .mobile-service-section .swiper-mobservice-single .card.card-special .card-func {visibility: hidden;}
+
+  /* 行動上網 - 國際漫遊 */
+  .mobile-service-section .swiper-mobservice-roaming .card .card-link {min-height: 120px; padding-bottom: 110%;}
+  .mobile-service-section .swiper-mobservice-roaming .card .card-link .card-img.bg {padding-bottom: 100%;}
+  .mobile-service-section .swiper-mobservice-roaming .card .card-link .card-text {padding-top: .6rem; font-size: .9rem; -webkit-line-clamp: 5;}
+
+  /* 行動上網 - 預付卡 */
+  .mobile-service-section .swiper-mobservice-prepaid .card.card-special .card-link .card-img.bg {padding-bottom: 170%;}
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-link .card-img.bg {width: 250px; padding-bottom: 85%;}
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-arena {top: .6rem; right: 1rem; padding: 0; margin: 0; text-align: center;}
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-link .card-text {padding: .6rem .8rem 0 .8rem; font-size: .9rem; font-weight: normal; -webkit-line-clamp: 5; min-height: 125px;}
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-link .card-func {position: absolute; left: 0; right: 0; bottom: 0; padding-top: .6rem; font-size: .95rem; height: 40px; border-top: 1px solid rgb(51 51 51 / 10%);}
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-link .card-func .card-more {color: #209cff;}
+  .mobile-service-section .swiper-mobservice-prepaid .card.card-special .card-func {visibility: hidden;}
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-arena .card-arena-price {top: 7.5rem; color: #ff874d; left: 0; right: 0; text-align: center;}/*20211123 The CSS Adjust for Version Mobile of ProgramCard Component */
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-arena .card-arena-price span {font-size: 2.1rem;}/*20211123 The CSS Adjust for Version Mobile of ProgramCard Component */
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-arena .card-arena-period {font-weight: bold; left: 0; right: 0; top: 9.6rem; text-align: center;}/*20211123 The CSS Adjust for Version Mobile of ProgramCard Component */
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-arena .card-only-price {top: 150px; color: #ff874d; left: 0; right: 0; text-align: center;}/*20211123 The CSS Adjust for Version Mobile of ProgramCard Component */
+  .mobile-service-section .swiper-mobservice-prepaid .card .card-arena .card-only-price span {font-size: 2.4rem;}/*20211123 The CSS Adjust for Version Mobile of ProgramCard Component */
+
+  /* 家用網路 - 一般 */
+  .broadband-service-section {position: relative; padding-bottom: 3.6rem;}
+  .broadband-service-section .swiper-wrapper {width: auto; padding-left: 1.2rem; padding-right: 1rem; padding-bottom: 2rem;}
+  .broadband-service-section .swiper-slide {width: 250px; display: flex; flex-direction: column;}
+  .broadband-service-section .card .card-link .card-img.bg {width: 250px;/* height: 157px;*/}
+  .broadband-service-section .card .card-arena {position: relative; background: linear-gradient(315deg , rgba(32,155,255,1) 0%, rgba(71,211,129,1) 100%); top: 0; left: 0; right: 0; padding: .8rem; height: 115px;}
+  .broadband-service-section .card>.card-link {background-size: contain; height: 0; padding-bottom: 159.9%;}
+  .broadband-service-section .card.card-special .card-img.bg {padding-bottom: 160%;}
+  .broadband-service-section .card.card-special .card-arena {position: absolute; background: none;}
+  .broadband-service-section .card.card-special .card-arena-note {margin-top: 0.4rem;}
+  .broadband-service-section .card.card-special .card-arena-note, .broadband-service-section .card.card-special .card-arena-note li {color: #fff; font-size: .9rem;}
+  .broadband-service-section .card .card-arena h3 {font-size: 1rem; margin: .5rem 0; line-height: 1.4;}
+  .broadband-service-section .card .card-period {font-size: .65rem; font-family: arial; color: #fff; margin-left: 4px; vertical-align: middle;}
+  .broadband-service-section .card .card-arena .card-arena-price {font-size: .8rem; top: 6.2rem;}
+  .broadband-service-section .card .card-arena .card-arena-price span {font-size: 1.4rem;}
+
+  .swiper-gift-button-next,.swiper-gift-button-prev {position: absolute; top: 0; width: 60px; height: 18px; margin-top: 0; z-index: 10; cursor: pointer; background-color: #fff; background-size: 10px 18px; background-position: center; background-repeat: no-repeat; height: 100%; display: flex; justify-content: center; align-items: center;}
+  .swiper-gift-button-next:focus,.swiper-gift-button-prev:focus {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0;}
+  .swiper-gift-button-prev,.swiper-container-rtl .swiper-gift-button-next {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23333'%2F%3E%3C%2Fsvg%3E"); background-position: center 110px; left: 0; right: auto;}
+  .swiper-gift-button-next,.swiper-container-rtl .swiper-gift-button-prev {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23333'%2F%3E%3C%2Fsvg%3E"); background-position: center 110px; right: 0; left: auto;}
+  .swiper-gift-button-next.swiper-button-disabled, .swiper-gift-button-prev.swiper-button-disabled {opacity: 0.2;}
+  .broadband-service-section .card .card-gift {text-align: center; display: flex; justify-content: center;}
+  .broadband-service-section .card .card-gift img {width: 120px; height: 120px; object-fit: contain;}
+  .broadband-service-section .card .card-text {font-size: .9rem; padding-top: .6rem; max-height: 72px;}
+  .broadband-service-section .card .card-text .small {font-size: .7rem;}
+
+  .broadband-service-section .h2 {font-size: 1.8rem; font-weight: bold !important;}
+  .broadband-service-section .container.without-padding {display: flex; align-items: center; padding-bottom: 0; padding-left: 1rem;}
+  .broadband-service-section .section-title-area {padding-bottom: 0 !important; margin-right: 1rem;}
+  .broadband-service-section .net-more a {position: relative; font-size: .7rem; font-weight: bold; border: 1px solid #999; padding: 0.3rem .8rem; border-radius: 1rem;}
+  .broadband-service-section .net-more a:hover {color: #333; border: 1px solid #333;}
+  .broadband-service-section .net-more a:after {content: '>'; font-family: cursive; margin-left: 4px;}
+  .mySwiper-broadband-service .broadband-category {position: relative; margin-top: .2rem; margin-bottom: .4rem; border-bottom: 0;}
+  .mySwiper-broadband-service .broadband-tab-title {display: flex; list-style: none; margin: 0; padding-left: 1rem; line-height: 1.6;}
+  .mySwiper-broadband-service .broadband-tab-title li a {padding: 0.4rem 1.8rem; color: #333; font-size: 0.9rem; font-weight: bold; margin: 0 4px; text-decoration: none; border-radius: 20px; transition: all .4s;}
+  .mySwiper-broadband-service .broadband-tab-title li a:hover, .mySwiper-broadband-service .broadband-tab-title li.active a {background: #333; color: #fff; border: 0; transition: all .4s;}
+  .mySwiper-broadband-service .swiper-container {padding-right: 2rem;}
+  .mySwiper-broadband-service .swiper-container.swiper-gift {padding: 0; position: relative;}
+  .mySwiper-broadband-service .swiper-container.swiper-gift .swiper-wrapper {padding: 0 0 2rem 0;}
+  .mySwiper-broadband-service .swiper-container.swiper-gift .swiper-slide {padding-top: 0.4rem; height: 140px;}
+  /*.mySwiper-broadband-service .swiper-slide {width: 466px;}*/
+  .mySwiper-broadband-service .swiper-slide .card {-webkit-box-shadow: 0rem .2rem .6rem rgba(0, 0, 0, 0.25); box-shadow: 0rem .2rem .6rem rgb(0 0 0 / 25%);}
+  .mySwiper-broadband-service .swiper-slide .card:hover { -webkit-box-shadow: 0rem .4rem .8rem rgba(0, 0, 0, 0.30);
+    box-shadow: 0rem .4rem .8rem rgb(0 0 0 / 30%);}
+  .mySwiper-broadband-service .card .card-link .card-func {position: absolute; left: 0; right: 0; bottom: 0; padding-top: 0;     font-size: .95rem; height: 40px; border-top: 1px solid rgb(51 51 51 / 10%); display: flex; justify-content: space-around;}
+  .mySwiper-broadband-service .card .card-link .card-func .card-more {color: #209cff; padding-top: .4rem;}
+  .mySwiper-broadband-service .card .card-link .card-func .card-more-gift {color: #333; padding-top: .4rem; text-decoration: none;}
+  .mySwiper-broadband-service .card .card-link .card-func .card-more-gift:after {content: ''; position: absolute; left: 50%; bottom: 0; height: 40px; border-left: 1px solid rgb(51 51 51 / 10%);}
+  .mySwiper-broadband-service .card.card-special .card-func {visibility: hidden;}
+
+  .lightbox .swiper-container {height: auto;}
+  .lightbox.broadband-service-section .card .card-arena {height: 150px;}
+  .lightbox.broadband-service-section .card .card-arena h3 {font-size: 1.2rem;}
+  .lightbox.broadband-service-section .card .card-arena .card-arena-price {top: 6.5rem;}
+  .lightbox.broadband-service-section .card .card-arena .card-arena-price span {font-size: 1.6rem;}
+  .lightbox.broadband-service-section .card .card-gift img {width: 200px; height: 200px;}
+  .lightbox.broadband-service-section .card .card-text {max-height: 85px; font-size: .95rem;}
+  .lightbox.broadband-service-section .card .card-text .small {font-size: .8rem;}
+  .lightbox.broadband-service-section .card .card-link .card-func {position: absolute; left: 0; right: 0; bottom: 0; padding-top: .3rem; font-size: .95rem; height: 50px; border-top: 1px solid rgb(51 51 51 / 10%); display: flex; justify-content: space-around;}
+  .lightbox.broadband-service-section .card .card-link .card-func .card-more {color: #666; padding-top: .4rem;}
+  .lightbox.broadband-service-section .card .card-link .card-func:hover .card-more {color: #209cff; text-decoration:none;}
+  .fancybox-slide>.lightbox.broadband-service-section {background: none; width: 90vw; padding: 0; margin: -190%;}
+  .fancybox-slide>.lightbox.broadband-service-section button.fancybox-close-small {margin-top: 12px; margin-right: 12px; opacity: .8; transform: scale(1); background: rgba(0, 0, 0, 0.1);}
+  .fancybox-slide>.lightbox.broadband-service-section button.fancybox-close-small:before,
+  .fancybox-slide>.lightbox.broadband-service-section button.fancybox-close-small:after {background: #fff; height: 3px;}
+  .fancybox-slide>.lightbox.broadband-service-section .swiper-wrapper {padding-left: 0; padding-right: 0;}
+  .fancybox-slide>.lightbox.broadband-service-section .swiper-slide {width: auto;}
+
+  /*.pop-overlay {position: fixed; background: rgba(0,0,0,.5); top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; display: none;}
+  .pop-overlay.show {display: block;}
+  .pop-overlay.show ~ .broadband-service-section {z-index: 9999;}*/
+  /*.pop-overlay .card-pop::before {content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100vh; width: 100%; z-index: -1;}*/
+  /*.pop-overlay.show ~ .broadband-service-section .card {display: none;}*/
+  /*.mySwiper-broadband-service .card-pop {display: none;}
+  .mySwiper-broadband-service .card-pop-close {position: absolute; color: #fff; right: 1rem; top: 1rem; z-index: 99;}
+  .pop-overlay.show ~ .broadband-service-section .card {visibility: hidden;}
+  .pop-overlay.show ~ .broadband-service-section .broadband-category:after {content: ''; position: absolute; background: rgba(0,0,0,.5); top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;}
+  .mySwiper-broadband-service .show-pop .card, .pop-overlay.show ~ .broadband-service-section .swiper-pagination {display: none;}
+  .mySwiper-broadband-service .show-pop .card-pop, .pop-overlay.show ~ .broadband-service-section .show-pop .card-pop {position: absolute; left: 0; top: 33%; height: 0; width: 90vw; padding-bottom: 166.67%; display: flex; visibility: visible; transition: all .4s;}
+  .broadband-service-section .card-pop .swiper-slide {width: 100%;}*/
+
+  /* 影音區 */
+  .promote-video-section {position: relative; height: 500px; width: 100%; margin-bottom: 3.6rem; overflow: visible;}
+  .promote-video-section.full {position: fixed; background: #000; width: 100%; height: 100vh; left: 0; top: 0; z-index: 1000000;}
+  .promote-video-section.full .swiper-wrapper {transform: initial !important;}
+  .promote-video-section.full .promote-video-section .swiper-promote-video {position: fixed; width: 100%; height: 100vh; left: 0; top: 0;}
+  .promote-video-section .lightbox-video {position: fixed; height: 100%; width: 100%; pointer-events: auto; left: 0px; top: 0px; background: black; overflow: hidden; z-index: 99; display: none;}
+  .promote-video-section .lightbox-video.show {display: flex; align-items: center;}
+  .promote-video-section .lightbox-inner:before {content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 100%; /*background: #000;*/ z-index: -1; pointer-events: none;}
+  .promote-video-section .lightbox-video .lightbox-header {height: 40px; display: flex; justify-content: flex-end;}
+  .promote-video-section .lightbox-video .lightbox-close-btn {width: 32px; height: 32px; margin-top: .6rem; margin-right: 0;}
+  .promote-video-section .lightbox-inner, .promote-video-section .lightbox-board, .promote-video-section iframe {width: 98%; height: auto; margin: 0 auto;}
+  .promote-video-section .video-bg:before {position: absolute; background: rgba(0,0,0,.4); content: ''; top: 0; left: 0; width: 100%; height: 483px; z-index: 2;}
+  .promote-video-section .video-bg, .promote-video-section .swiper-promote-video {width: 100%; height: 100%; left: 0; top: 0;}
+  .promote-video-section .video-bg video {width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; -o-object-position: center center; object-position: center center;}
+  .promote-video-section .video-title {text-align: center;}
+  .promote-video-section .video-inner { position: absolute; width: 100%; color: #fff; top: 20%; z-index: 3;}
+  .promote-video-section .video-title .video-sub {font-size: 1.4rem;}
+  .promote-video-section .video-title .video-main {font-size: 2rem; margin-bottom: 30px;}
+  .promote-video-section .video-play-btn {width: 120px; height: 120px; margin: 0 auto;display: flex; justify-content: center; align-items: center; color: #fff; font-weight: bold; border: 1px solid #fff; border-radius: 50%; opacity: 0.8; text-decoration: none; transform: scale(1); transition: all .4s;}
+  .promote-video-section .video-play-btn:hover {opacity: 1; transform: scale(1.06); transform-origin: center center; transition: all .4s;}
+  .promote-video-section .video-play-btn span:after {content: '▲'; transform: rotate(90deg); margin-left: 2px; width: 20px; height: 20px; display: inline-block; font-size: .7rem;}
+  .promote-video-section .swiper-promote-thumbs {position: absolute; bottom: -35px; left: 0; right: 0; width: 100%; height: 85px; box-sizing: border-box; padding: 10px 0; z-index: 8;}/*20230112 CR#745修改影片縮圖擋到tab*/
+  .promote-video-section .swiper-promote-thumbs .swiper-wrapper {padding-left: 2rem; justify-content: left;}
+  .promote-video-section.full .swiper-promote-thumbs {display: none;}
+  .promote-video-section .swiper-promote-thumbs .swiper-slide {background-size: cover; background-repeat: no-repeat; align-items: flex-end; padding: 0; width: 110px !important; height: 66px; cursor: pointer; border-radius: 8px; box-shadow: 0 2px 8px rgb(0 0 0 / 20%); opacity: 1; transition: all .4s;}
+  /*.promote-video-section .swiper-promote-thumbs .swiper-slide-thumb-active, .promote-video-section .swiper-promote-thumbs .swiper-slide:hover {opacity: 1; transition: all .4s;}*/
+  /*.promote-video-section .swiper-promote-thumbs {position: relative;}*/
+  .promote-video-section .swiper-promote-thumbs .promote-thumbs-title {display: none;}
+  .promote-video-section .swiper-promote-thumbs .swiper-slide::after {content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 66px; background-color: rgba(0,0,0,.55); border-radius: 8px; transition: all .4s;}
+  .promote-video-section .swiper-promote-thumbs .swiper-slide:hover::after, .promote-video-section .swiper-promote-thumbs .swiper-slide-thumb-active.swiper-slide::after {background-color: rgba(0,0,0,0); transition: all .4s;}
+
+  /* 更多推薦 */
+  .more-recommend-section {position: relative; padding-bottom: 3.6rem;}
+  .more-recommend-section .h2 {font-size: 1.8rem; font-weight: bold !important;}
+  .more-recommend-section .card .card-arena h3 {font-size: 1.4rem; text-align: center;}
+  .more-recommend-section .card .card-link .card-img.bg {height: 250px; width: 100%;}
+  .more-recommend-section .card .card-link .card-text {padding: 0.6rem 1rem 0 1rem; font-size: .9rem; -webkit-line-clamp: 5;}
+  .more-recommend-section .container.without-padding {display: flex; align-items: center; padding-bottom: 0; padding-left: 1rem;}
+  .more-recommend-section .section-title-area {padding-bottom: 0 !important; margin-right: 1rem;}
+  .mySwiper-more-recommend .recommend-category {margin-top: .2rem; margin-bottom: .4rem; border-bottom: 0;}
+  .mySwiper-more-recommend .recommend-tab-title {display: flex; padding-left: 1rem; list-style: none; margin: 0; line-height: 1.6;}
+  .mySwiper-more-recommend .recommend-tab-title li a {padding: 0.4rem 1.8rem; color: #333; font-size: .9rem; font-weight: bold; margin: 0 4px; text-decoration: none; border-radius: 20px; transition: all .4s;}
+  .mySwiper-more-recommend .recommend-tab-title li a:hover, .mySwiper-more-recommend .recommend-tab-title li.active a {background: #333; color: #fff; border-bottom: 0; transition: all .4s;}
+  .mySwiper-more-recommend .swiper-container {overflow: hidden; padding-bottom: 2rem; padding-left: calc(50% - 570px); padding-right: 5%;}
+  .mySwiper-more-recommend .swiper-wrapper {width: auto; padding-left: 1rem; padding-right: 1rem;}
+  .mySwiper-more-recommend .swiper-slide {width: 264px;}
+  .mySwiper-more-recommend .swiper-slide .card {-webkit-box-shadow: 0rem .2rem .6rem rgba(0, 0, 0, 0.25); box-shadow: 0rem .2rem .6rem rgb(0 0 0 / 25%);}
+  .mySwiper-more-recommend .swiper-slide .card:hover { -webkit-box-shadow: 0rem .4rem .8rem rgba(0, 0, 0, 0.30);
+    box-shadow: 0rem .4rem .8rem rgb(0 0 0 / 30%);}
+  .mySwiper-more-recommend .swiper-slide .card .card-link {height: 0; width: 250px; padding-bottom: 160%;}
+
+  .mobile-service-section .swiper-recommend-vip .card .card-arena {text-align: center; height: 250px; width: 100%; top: 0; left: 0; display: flex; align-items: center; justify-content: center;}
+  .mobile-service-section .swiper-recommend-hamipoint .card .card-arena {position: relative; top: auto; left: auto; padding: 0.8rem 1rem 0 1rem;}
+  .mobile-service-section .swiper-recommend-hamipoint .card .card-arena h3{color: #333; font-size: 1rem; margin: 0;}
+  .mobile-service-section .swiper-recommend-hamipoint .card .card-link .card-img.bg {height: 250px; width: 100%; padding-bottom: 0 !important;}
+  .mobile-service-section .swiper-recommend-hamipoint .card a {background-size: contain; height: 360px; padding-bottom: 0;}
+  .mobile-service-section .swiper-recommend-hamipoint .card .card-link {min-height: auto;}
+  .mobile-service-section .swiper-recommend-hamipoint .card .card-link .card-text {padding: 0.6rem 1rem 0 1rem; font-size: .9rem; -webkit-line-clamp: 5;}
+  .mobile-service-section .swiper-recommend-hamipoint .container.without-padding {display: flex; align-items: center; padding-bottom: 0; padding-left: 1rem;}
+  .mobile-service-section .swiper-recommend-hamipoint .section-title-area {padding-bottom: 0 !important; margin-right: 1rem;}
+  .mobile-service-section .swiper-recommend-leading .card a.card-link {background-size: contain; height: 235px; padding-bottom: 0; min-height: auto;}
+  .mySwiper-more-recommend .swiper-recommend-vip .card .card-arena {height: 250px; width: 100%; top: 0; left: 0; display: flex; align-items: center; justify-content: center;}
+  .mySwiper-more-recommend .swiper-recommend-hamipoint .card .card-arena {position: relative; top: auto; left: auto; padding: 0.8rem 1rem 0 1rem;}
+  .mySwiper-more-recommend .swiper-recommend-hamipoint .card .card-arena h3{color: #333; font-size: 1rem; margin: 0;}
+  .mySwiper-more-recommend .swiper-recommend-hamipoint .card a {background-size: contain; height: 360px; padding-bottom: 0;}
+  .mySwiper-more-recommend .swiper-recommend-hamipoint .card .card-link {min-height: auto;}
+  .mySwiper-more-recommend .swiper-recommend-leading .card a.card-link {background-size: contain; height: 235px; padding-bottom: 0; min-height: auto;}
+  /*211206 更多推薦 css增修    */
+  .swiper-recommend-vip .card .card-arena {height: 250px; width: 100%; top: 0 !important; left: 0 !important; display: flex; align-items: center; justify-content: center; } /* 行動VIP */
+  .swiper-recommend-vip .card .card-link .card-img.bg {height: 250px; padding-bottom: 0 !important;}
+  .swiper-recommend-vip .card .card-arena h3 {font-size: 1.4rem; text-align: center;}
+  .swiper-recommend-leading .card .card-link {min-height: auto;height: 235px !important;padding: 0 !important;} /* 純圖片 */
+  .swiper-recommend-leading .card .card-link .card-img.bg {min-height: auto; padding: 0 !important; height: 235px !important;}
+  .swiper-recommend-leading .card .card-link .card-text {display: none;} /* 純圖片 */
+  .swiper-recommend-leading .card .card-arena {height: 235px; width: 100%; top: 0 !important; left: 0 !important; display: flex; align-items: center; justify-content: center;} /* 純圖片加title文字 */
+  /* 更多優惠 */
+  .more-discount-section {position: relative; padding-bottom: 3.6rem;}
+  .more-discount-section .h2 {font-size: 1.8rem; font-weight: bold !important;}
+  .more-discount-section .card .card-link .card-img.bg {height: 250px; width: 100%;}
+  .more-discount-section .container.without-padding {display: flex; align-items: center; padding-bottom: 0; padding-left: 1rem;}
+  .more-discount-section .section-title-area {padding-bottom: 0 !important; margin-right: 1rem;}
+  .mySwiper-more-discount .swiper-container {overflow: hidden; padding-bottom: 2rem; padding-left: calc(50% - 570px); padding-right: 5%;}
+  .mySwiper-more-discount .swiper-wrapper {width: auto; padding-left: 1rem; padding-right: 1rem;}
+  .mySwiper-more-discount .swiper-slide {width: 264px;}
+  .mySwiper-more-discount .swiper-slide .card {-webkit-box-shadow: 0rem .2rem .6rem rgba(0, 0, 0, 0.25); box-shadow: 0rem .2rem .6rem rgb(0 0 0 / 25%);}
+  .swiper-more-discount .card a {background-size: contain; height: 250px; padding-bottom: 0; min-height: auto;}
+
+  /* footer */
+  section.footer {font-size: 0.75rem; font-weight: bold !important; border-top: 0; padding-bottom: 8rem;}
+  section.footer .container .accordian-group-footer {padding-left: 1.2rem; padding-right: 1.2rem;}
+  section.footer .footer-list li {font-size: .9rem; line-height: 2.2;}
+  section.footer .h6.accordian-title {font-size: 1.2rem; border-bottom: 0;}
+  section.footer .footer-label {font-size: 1.8rem; line-height: 2.4; margin-bottom: 1rem;}
+  section.footer .official-links {display: flex; justify-content: space-evenly;}
+  section.footer .official-links a img {height: 22px;}
+  section.footer .footer-links-copyright {display: flex; flex-direction: column; padding-top: 0;}
+  section.footer .misc-links {font-size: 0.9rem;}
+  section.footer .misc-links a {border-right: 1px solid rgba(0, 0, 0, 0.1) !important;}
+  section.footer .misc-links a:last-child {border-right: 0 !important;}
+  section.footer .site-links-copyright {display: flex; flex-direction: column; align-items: flex-end;}
+  section.footer .group-icon {margin: 0 4px; display: inline-block; opacity: 0.75;}
+  section.footer .group-icon:hover {opacity: 1;}
+  section.footer .group-icon img {vertical-align: middle;}
+
+  /*220510 增修*/
+#footer ~ #btn-customer-service.btn-scroll-top.scrolling-down {bottom: 30px !important;}
+section.footer {padding-bottom: 8.6rem;}
+section.footer .site-links-copyright {width: 90%; align-items: flex-start;}
+section.footer .footer-site-links {display: flex;justify-content: space-between; }
+.btn-customer-service.btn-scroll-top.scrolling-down {
+    bottom: 30px !important;
+} 
+
+
+  /* 覆蓋廣告 */
+  .adb-overlay {position: fixed; background: rgba(0,0,0,.7); top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; visibility: hidden; transition: all .4s;}
+  .adb-overlay.active {visibility: visible; transition: all .4s;}
+  .adb-overlay-banner::before {content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100vh; width: 100%; z-index: -1;}
+  .adb-overlay-close {position: absolute; margin-right: -16rem; top: calc(50% - 220px);}
+  .overlay-hidden {overflow: hidden; height: 100%;}
+
+  /* 卡片樣式 - 加值 */
+ .card-value-add .card>.card-link {width: 250px !important; padding-bottom: 160% !important;}
+ .card-value-add .card .card-link .card-img.bg {background-color: #ccc; width: 250px ; padding: 0;height: 130px; z-index: -1;}
+ .card-value-add .card .card-arena {height: auto !important; top: 0 !important; left: 0 !important; background: none; padding: 0.6rem;}
+ .card-value-add .card .card-gift {margin-top: -3rem; text-align: center; display: flex; justify-content: center; z-index: 9; margin-bottom: .6rem;}
+ .card-value-add .card .card-gift img {width: 90px ; height: 90px; border: 6px solid #fff; border-radius: 20px; background-color: #fff;}
+ .card-value-add .card .card-text {padding-top: 0; line-height: 1.4; font-size: 0.9rem;}
+ .card-value-add .card .card-arena-text {display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;}
+ .card-value-add .card .card-arena-price {margin-top: .6rem; color: #999;}
+ .card-value-add .card .card-link .card-func {position: absolute; left: 0; right: 0; bottom: 0; padding-top: 0.2rem;     font-size: .95rem; height: 44px; border-top: 1px solid rgb(51 51 51 / 10%); display: flex; justify-content: space-around;}
+ .card-value-add .card .card-link .card-func .card-more {color: #666; padding-top: .4rem;}
+ .card-value-add .card .card-link .card-func .card-more-gift {color: #333; padding-top: .4rem; text-decoration: none;}
+ .card-value-add .card .card-link .card-func .card-more-gift:after {content: ''; position: absolute; left: 50%; bottom: 0; height: 40px; border-left: 1px solid rgb(51 51 51 / 10%);}
+ .card-value-add .card.card-special .card-func {visibility: hidden;}
+ .card-value-add .card > .card-link {z-index: 1;}
+
+ /* 211206 增修 */
+.swiper-container.swiper-bdservice {position: relative; padding-bottom: 1rem;}
+.swiper-container.swiper-bdservice .swiper-wrapper {padding-bottom: 2rem;}
+.swiper-container.swiper-bdservice .swiper-slide {width: 250px;}
+.swiper-container.swiper-bdservice .card-wrapper {width: auto; padding: 0.5rem 0.2rem 0.3rem 0.2rem; margin: 0;}
+.swiper-container.swiper-bdservice .card .card-link {background-size: contain; height: 400px; padding-bottom: 0;}
+.swiper-container.swiper-bdservice .card .card-link .card-img.bg {width: 250px; height: 135px; padding-bottom: 0;}
+.swiper-container.swiper-bdservice .card .card-arena {background: linear-gradient(315deg , rgba(32,155,255,1) 0%, rgba(71,211,129,1) 100%); top: 0; left: 0; right: 0; padding: .6rem; height: 111px;}
+.swiper-container.swiper-bdservice .card.card-special .card-img.bg {height: 400px;}
+.swiper-container.swiper-bdservice .card.card-special .card-arena {background: none;}
+.swiper-container.swiper-bdservice .card.card-special .card-arena-note {margin-top: 0.4rem;}
+.swiper-container.swiper-bdservice .card.card-special .card-arena-note, .swiper-container[data-swiper-bdservice] .card.card-special .card-arena-note li {color: #fff; font-size: .75rem;}
+.swiper-container.swiper-bdservice .card .card-arena h3 {font-size: .8rem; margin: .5rem 0; line-height: 1.4;}
+.swiper-container.swiper-bdservice .card .card-period {font-size: .65rem; font-family: arial; color: #fff; margin-left: 4px; vertical-align: middle;}
+.swiper-container.swiper-bdservice .card .card-arena .card-arena-price {font-size: .7rem; top: 100px;}
+.swiper-container.swiper-bdservice .card .card-arena .card-arena-price span {font-size: 1.2rem;}
+.swiper-container.swiper-bdservice .card .card-gift {text-align: center; display: flex; justify-content: center; padding-top: 0.6rem;}
+.swiper-container.swiper-bdservice .card .card-gift img {width: 120px; height: 120px; object-fit: contain;}
+.swiper-container.swiper-bdservice .card .card-text {font-size: .75rem; padding-top: .2rem;}
+.swiper-container.swiper-bdservice .card .card-text .small {font-size: .65rem;}
+.swiper-container.swiper-bdservice .broadband-category {position: absolute; top: 1.8rem; left: calc(50% - 360px);}
+.swiper-container.swiper-bdservice .broadband-tab-title {display: flex; list-style: none; margin: 0;}
+.swiper-container.swiper-bdservice .broadband-tab-title li a {padding: 0.4rem 1.4rem; color: #333; font-size: 0.85rem; font-weight: bold; margin: 0 4px; text-decoration: none; border-radius: 20px; transition: all .4s;}
+.swiper-container.swiper-bdservice .broadband-tab-title li a:hover, .swiper-container[data-swiper-bdservice] .broadband-tab-title li.active a {background: #333; color: #fff; transition: all .4s;}
+.swiper-container.swiper-bdservice .swiper-container {overflow: hidden; padding-bottom: 2rem; padding-left: calc(50% - 570px); padding-right: 5%;}
+.swiper-container.swiper-bdservice .swiper-container.swiper-gift {padding: 0; position: relative;}
+.swiper-container.swiper-bdservice .swiper-container.swiper-gift .swiper-slide {padding-top: .2rem; flex-direction: column;}
+.swiper-container.swiper-bdservice .swiper-slide .card {-webkit-box-shadow: 0rem .2rem .6rem rgba(0, 0, 0, 0.25); box-shadow: 0rem .2rem .6rem rgb(0 0 0 / 25%);}
+.swiper-container.swiper-bdservice .swiper-slide .card:hover {-webkit-box-shadow: 0rem .4rem .8rem rgba(0, 0, 0, 0.30); box-shadow: 0rem .4rem .8rem rgb(0 0 0 / 30%);}
+.swiper-container.swiper-bdservice .card .card-link .card-func {position: absolute; left: 0; right: 0; bottom: 0; padding-top: 0; font-size: .95rem; height: 40px; border-top: 1px solid rgb(51 51 51 / 10%); display: flex; justify-content: space-around;}
+.swiper-container.swiper-bdservice .card .card-link .card-func:hover {transition: all .4s;}
+.swiper-container.swiper-bdservice .card .card-link .card-func .card-more-gift {color: #333; height: auto; padding-top: 0.4rem; text-decoration: none;}
+.swiper-container.swiper-bdservice .card .card-link .card-func .card-more-gift:after {content: ''; position: absolute; left: 50%; bottom: 0; height: 40px; border-left: 1px solid rgb(51 51 51 / 10%);}
+.swiper-container.swiper-bdservice .card .card-link .card-func .card-more {color: #666; height: auto; padding-top: 0.4rem;}
+.swiper-container.swiper-bdservice .card .card-link .card-func:hover .card-more {color: #209cff; text-decoration:none;}
+.swiper-container.swiper-bdservice .card.card-special .card-func {visibility: hidden;}
+
+/* 211206 animate-bg */
+.container-bg {position: absolute; top: 0; left: 0; right: 0; bottom: 0; /*align-items: center; display: flex; justify-content: center; */ width: 100vw; height: 100%; z-index: -5; opacity: .36;}
+.shape {position: fixed; top: 160px; right: -120px; background: linear-gradient(45deg, #95e3f6 0%, #51ccf4 100%); animation: morph 12s ease-in-out infinite; border-radius: 60% 40% 20% 80%/60% 20% 80% 40%; height: 280px; width: 280px; transition: all 1s ease-in-out; z-index: -5;}
+.shape2 {position: fixed; top: 360px; left: -280px; background: linear-gradient(45deg, #d2ff98 0%, #66c0b8 100%); animation: morph2 12s ease-in-out infinite; border-radius: 60% 30% 70% 40%/60% 70% 40% 30%; height: 320px; width: 320px; transition: all 1s ease-in-out; z-index: -5;}
+.shape3 {position: fixed; top: 1480px; right: -150px; background: linear-gradient(45deg, #ffa873 0%, #fd8373 100%); animation: morph3 16s ease-in-out infinite; border-radius: 60% 80% 30% 40%/60% 40% 80% 30%; height: 280px; width: 280px; transition: all 1s ease-in-out; z-index: -5;}
+
+.rellax-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -5;
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 60% 40% 20% 80%/60% 20% 80% 40%;
+        transform: rotate(0);
+    }
+    50% {
+        border-radius: 40% 20% 80% 60%/30% 50% 80% 60%;
+        transform: rotate(60deg);
+    }
+    100% {
+        border-radius: 60% 40% 20% 80%/60% 20% 80% 40%;
+        transform: rotate(0deg);
+    }
+}
+@keyframes morph2 {
+    0% {
+        border-radius: 60% 30% 70% 40%/60% 70% 40% 30%;
+        transform: rotate(0);
+    }
+    50% {
+        border-radius: 30% 70% 40% 60%/50% 30% 60% 40%;
+        transform: rotate(120deg);
+    }
+    100% {
+        border-radius: 60% 30% 70% 40%/60% 70% 40% 30%;
+        transform: rotate(0deg);
+    }
+}
+@keyframes morph3 {
+    0% {
+        border-radius: 60% 80% 70% 40%/60% 40% 80% 70%;
+        transform: rotate(0deg);
+    }
+    50% {
+        border-radius: 80% 70% 40% 60%/50% 70% 60% 40%;
+        transform: rotate(-60deg);
+    }
+    100% {
+        border-radius: 60% 80% 70% 40%/60% 40% 80% 70%;
+        transform: rotate(0deg);
+    }
+}
+/*CR#665 begin*/
+.layout-edm .header-spacer {height: 60px;}
+.layout-edm .tab .tab-wrap {line-height: 3rem;}
+.layout-edm .neko .card-text h5 {font-size: .8rem;}
+.layout-edm .card-new-nekos .card, .layout-edm .card-new-nekos .card:hover, .layout-edm .card-new-rate .card-new-nekos .card, .layout-edm .card-new-rate .card-new-nekos .card:hover {background-color: #fff;}
+.layout-edm section.footer {border-top: 1px solid rgba(0,0,0,0.1);padding-bottom: 0;}
+.layout-edm section.footer .misc-links {font-size: .7rem;font-weight: normal;text-align: left; margin-bottom: 1rem;}
+/*20230215 EDM頁面 Default Footer跑版 begin*/
+/*.layout-edm section.footer .footer-links-copyright {display: block;}
+.layout-edm section.footer .footer-site-links {display: block;font-size: 0.7rem;font-weight: normal;}
+.layout-edm section.footer .site-links-copyright {align-items: center;margin: 0;}
+.layout-edm .footer-scroll-top {position: absolute;right: 10px;top: 0;}*/
+/*.layout-edm.tab .tab-wrap::-webkit-scrollbar {display: block;}*/
+/*20230215 EDM頁面 Default Footer跑版 end*/
+/*CR#665 end*/
+
+/*230310 CR752 begin*/
+/* 調整img tag中放入svg圖檔後卡片跑版問題*/
+.mobile-service-section.new-consumer .swiper-mobservice-prepaid .card ul > li > img {
+    display: inline-block;
+    object-fit: contain;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+/*230310 CR752 end*/

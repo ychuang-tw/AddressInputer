@@ -1,0 +1,415 @@
+@charset "UTF-8";
+@media screen and (max-width: 20000px) {
+    section#header::before {
+        z-index: 10;
+    }
+    section#header.with-banner::before {
+        z-index: 1000;
+    }
+    section.header-spacer.with-banner-k {
+        height: 91px;
+    }
+    section.header-spacer.with-banner.with-banner-k {
+        height: 151px;
+    }
+    /* ----- K金版位 ----- */
+    #header .just-padding {
+        padding: .1em;
+    }
+    .scrolling-down + .owl-carousel {
+        margin-top: -60px;
+    }
+    .neko .qa-item i.data-symbol {
+        opacity: 1;
+    }
+    .owl-item .is-regular {
+        white-space: nowrap;
+    }
+    .button {
+        border: none;
+    }
+    .button.button-disable {
+        background: #999;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    /* ------ header-blank-d.html ------ */
+    section#header header nav .hb-logo {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        margin-left: 5px;
+    }
+    .extra-link {
+        margin-left: auto;
+        -ms-flex-item-align: center;
+        align-self: center;
+    }
+    .extra-link a {
+        color: #333;
+        font-weight: 400;
+        padding: .6rem 1rem;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .social-group {
+        -ms-flex-item-align: center;
+        align-self: center;
+        height: 40px;
+        margin-right: 5px;
+    }
+    .social-group div {
+        display: inline-block;
+        height: 40px;
+        margin-right: 5px;
+    }
+    .social-group .fb-share img {
+        width: 40px;
+        height: 40px;
+    }
+    .card-wrapper:hover {
+        text-decoration: none;
+    }
+    /* ----- /edm/extra.html ----- */
+    .video-container-m {
+        position: relative;
+        background-image: url("../img/clip_frame_m.png");
+        background-size: cover;
+    }
+    .video-container-m::before {
+        content: '';
+        display: block;
+        padding-top: 142.35%;
+    }
+    .video-container-m .embed-responsive {
+        position: absolute;
+        top: 44.5%;
+        padding: 0 9%;
+    }
+    .video-container-m .embed-responsive::before {
+        padding-top: 75%;
+    }
+    .video-container-m .embed-responsive .embed-responsive-item {
+        position: absolute;
+        top: 0;
+        width: 82%;
+        height: 100%;
+        border: 0;
+    }
+    .embed-responsive {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+    .embed-responsive::before {
+        content: '';
+        display: block;
+    }
+    /* ------ 光世代可供裝速率查詢 ------ */
+    .compare-bar-chart .chart-unit .is-3 {
+        margin-top: 1.5em;
+    }
+    /* ------ fancybox 內容修正 ------ */
+    .lightbox .button {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 20001px) {
+    header nav {
+        padding-top: 20px;
+    }
+    /* ----- 彩色裝飾條 ----- */
+    section#header::before {
+        z-index: 10;
+    }
+    section#header.with-banner::before {
+        top: 70px;
+    }
+    section.header-spacer.with-banner-k {
+        height: 91px;
+    }
+    section.header-spacer.with-banner.with-banner-k {
+        height: 151px;
+    }
+    /* ----- 黃金版位 ----- */
+    .banner.banner-black {
+        background: #222;
+    }
+    .banner.banner-black .banner-text {
+        color: #4ec1e7;
+    }
+    .banner .container {
+        line-height: 1;
+        width: auto;
+        max-width: 100%;
+    }
+    .banner .container:hover {
+        text-decoration: none;
+    }
+    .banner .banner-img {
+        min-height: 70px;
+        max-height: 70px;
+    }
+    .banner > .close-banner {
+        display: inline-block;
+        height: 1.3em;
+        width: 1.3em;
+        top: 20px;
+        text-align: center;
+        line-height: 1.2;
+        border-radius: 50%;
+    }
+    .neko .qa-item i.data-symbol {
+        opacity: 1;
+    }
+    .button {
+        border: none;
+    }
+    .button.button-disable {
+        background: #999;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .button.button-disable:hover {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+    /* ----- K金版位 ----- */
+    #header .owl-carousel .just-padding {
+        padding: .1em;
+    }
+    #header .owl-carousel .h5:hover {
+        text-decoration: none;
+    }
+    .owl-item .is-regular {
+        white-space: nowrap;
+    }
+    /* ------ product-list-d.html ------ */
+    .card-wrapper:hover {
+        text-decoration: none;
+    }
+    .card.product .card-img {
+        padding-top: 2.5rem;
+    }
+    .card-list .card-img + .card-text {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        height: 100%;
+    }
+    .card-list .card-img + .card-text > .content-center {
+        margin-top: auto;
+    }
+    .cht-banner {
+        background-position: center 20%;
+        min-height: 400px;
+    }
+    /* ------ header-blank-d.html ------ */
+    .extra-link {
+        margin-left: auto;
+        -ms-flex-item-align: center;
+        align-self: center;
+    }
+    .extra-link a {
+        font-weight: 400;
+        padding: .6rem 1rem;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .social-group {
+        -ms-flex-item-align: center;
+        align-self: center;
+    }
+    .social-group div {
+        display: inline-block;
+        height: 40px;
+        margin-right: 5px;
+    }
+    .social-group .fb-share img {
+        width: 40px;
+        height: 40px;
+    }
+    /* ----- Campaign/extra.html ----- */
+    .neko a.neko-link {
+        color: #333;
+        width: 100%;
+    }
+    .neko a.neko-link:hover {
+        color: #209cff;
+        text-decoration: none;
+    }
+    .neko a.neko-link:hover .lazyload {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+    .neko a.neko-link .card-inside {
+        background-size: cover;
+        min-height: 550px;
+        background-position: center 20%;
+    }
+    /* ---- 商品介紹過長網址斷行 --- */
+    #div_SenaoDetail {
+        word-break: break-all;
+    }
+}
+
+/* ----- 問卷 ----- */
+#thank-box.lightbox {
+    max-width: 440px;
+    min-width: auto;
+}
+#thank-box.lightbox .h3 {
+    font-size: 0.9rem;
+    text-align: left;
+    width: 90%;
+}
+#thank-box.lightbox.survey-style {
+    position: fixed;
+    transform: translateY(300px);
+    transition-delay: 0.4s;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    padding: 1.2rem;
+    z-index: 99;
+}
+#thank-box.lightbox.survey-style.show-delay {
+    bottom: -12px;
+    padding-bottom: 40px;
+    margin: 0 2px;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+    opacity: 1;
+    z-index: 99;
+}
+#thank-box.lightbox.survey-style hr {
+    margin-bottom: 0.8rem;
+}
+#thank-box.lightbox.survey-style .button {
+    padding: 0.4rem;
+}
+#thank-box.lightbox.survey-style .h3 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+#thank-box.lightbox.survey-style h4 {
+    font-size: 0.9rem;
+}
+#thank-box.lightbox.survey-style .lightbox-content {
+    font-size: 0.9rem;
+}
+#thank-box.lightbox.survey-style .lightbox-content .os-theme-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
+    background: rgba(0,0,0,.2);
+}
+.fancybox-slide > #thank-box.lightbox button.fancybox-close-small {
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+/* ----- 開合元件 ----- */
+.page-vas-self-notice {
+    padding: 0.4rem 0; margin: 0 auto; font-size: 0.8rem;
+}
+.page-vas-self-notice .accordian-group.alt .accordian-title {
+    background: url(../img/minus-outline.svg) no-repeat left center; background-size: 1rem; padding-left: 1.4rem;
+}
+.page-vas-self-notice .accordian-group.alt.active .accordian-title {
+    background: url(../img/plus-outline.svg) no-repeat left center; background-size: 1rem;
+}
+.page-vas-self-notice .accordian-group {
+    margin-bottom: 0; padding: 0.4rem 0;
+}
+.page-vas-self-notice .notice-list li {
+    list-style: none;
+}
+.page-vas-self-notice .notice-extra {
+    padding-left: 1rem; padding-top: 0.6rem;
+}
+.page-vas-self-notice .notice-extra label {
+    padding-left: 0.4rem; line-height: 1;
+}
+
+/*221027 begin*/
+/*1207新增 AWD 小網調整tab*/
+#header {
+    transition: transform 0.1s;
+}
+
+.tab.tab-sticky.is_stuck {
+    -webkit-transform: translateY(110px);
+    -ms-transform: translateY(110px);
+    transform: translateY(110px);
+    height: auto;
+    padding: 0;
+    margin-top: 0;
+    transition: transform 0s;
+    opacity: 0;
+    z-index: -1;
+}
+
+.tab.tab-sticky.is_stuck.aos-animate {
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    transition: transform 0.4s;
+    opacity: 1;
+    z-index: 300;
+}
+
+.tab.tab-sticky {
+    padding-top: 20px;
+    margin-top: -20px;
+}
+
+.tab.tab-sticky.is_stuck {
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+    height: auto;
+    padding: 0;
+    margin-top: 0;
+    transition: transform 0s;
+    opacity: 0;
+}
+
+.tab.tab-sticky.is_stuck.aos-animate {
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    top: 60px;
+    transition: transform 0.4s;
+    z-index: 9;
+    opacity: 1;
+}
+/*221027 End*/
+
+/*CR#699 footer*/
+section#footer hr {background: transparent; border: none; border-top: 1px solid #333; margin-top: 0; height: 1px; opacity: .2;}
+section#footer .footer-site-links {position: relative;}
+section#footer .footer-site-links .misc-links, section.footer .footer-site-links .miniature {text-align: center;}
+section#footer.no-footer-logo .footer-links-copyright {display: block;}
+section#footer.no-footer-logo .footer-site-links {justify-content: center;}
+section#footer.no-footer-logo .site-links-copyright {align-items: center;}
+section#footer.no-footer-logo .footer-scroll-top {position: absolute; right: 10px; top: 0; display: flex; justify-content: center; align-items: center; height: 36px; width: 36px; user-select: none; cursor: pointer; z-index: 10;}
+section.footer .official-links a {width: auto; overflow: hidden; display: flex; flex-wrap: wrap;}
+section#footer .footer-site-links .misc-links, section#footer .footer-site-links .miniature {text-align: left; font-size: .75rem;}
+section#footer .footer-site-links .misc-links a {white-space: nowrap; margin-right: 0.3rem; padding-right: 0.3rem;}
+section#footer.no-footer-logo .footer-site-links {width: auto; justify-content: space-between; display: inline;}
+
+/*230201 新客專區-tab列 begin*/
+.tab-new-consumer {padding: 2rem 0 1.6rem 0;}
+.tab-new-consumer .tab {background: #fafafa; border-bottom: 0;}
+.tab-new-consumer .tab .tab-container {width: 100%; max-width: initial;}
+.tab-new-consumer .tab.tab-sticky ul.tab-wrap li:nth-child(1).current a {color: #ff4c4c; border-bottom: 3px solid #ff4c4c;}
+.tab-new-consumer .tab.tab-sticky ul.tab-wrap li:nth-child(2).current a {color: #f5a623; border-bottom: 3px solid #f5a623;}
+.tab-new-consumer .tab.tab-sticky ul.tab-wrap li:nth-child(3).current a {color: #ff874d; border-bottom: 3px solid #ff874d;}
+.tab-new-consumer .tab.tab-sticky ul.tab-wrap li:nth-child(4).current a {color: #0267b9; border-bottom: 3px solid #0267b9;}
+.tab-new-consumer .tab.tab-sticky ul.tab-wrap li:nth-child(5).current a {color: #47d382; border-bottom: 3px solid #47d382;}
+/*230201 新客專區-tab列 end*/

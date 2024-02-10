@@ -1,0 +1,138 @@
+@charset "UTF-8";
+.page-vas {background: #f5f5f5; padding-top: 0;}
+.page-vas .vas-anchor {margin-top: -2rem; padding-top: 2rem; display: block;}
+.page-vas .vas-filter {background: #fff; margin-bottom: 0.8rem; padding-bottom: 0.8rem; box-shadow: 0 0 3px #999;}
+.page-vas .container.without-padding {padding: 0;}
+.page-vas .vas-package-promote, .page-vas .vas-service-category {padding: 0.2rem 0;}
+.page-vas .vas-package-promote-list, .page-vas .vas-service-category-list {padding: 0 1rem;}
+.vas-package-promote label, .vas-service-category label {font-size: 1.2rem;}
+.vas-package-promote select, .vas-service-category select {-webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; display: -webkit-box;}
+.vas-service-category select {border: 0; width: 100%;}
+.vas-package-promote .form-custom-radio label, .vas-service-category .form-custom-radio label{font-size: 0.8rem;}
+.vas-service-category .filter-tab .filter-container {box-shadow: none; border: 1px solid #d6d6d6; border-radius: 4px;}
+.vas-service-category .filter-tab .form-textual span {font-size: 0.9rem; font-weight: normal;color: #333; line-height: 1.6;}
+.vas-service-category .filter-tab .form-textual .sub-menu {width: 100%; padding: 0.6rem 1.2rem 1rem 1.2rem;}
+.vas-service-category .filter-tab .form-textual .sub-menu label {font-size: 0.9rem; font-weight: normal; color: #aaa;}
+.vas-service-category .filter-tab .form-textual .sub-menu li {font-size: 0.9rem; font-weight: normal;}
+.vas-service-category .filter-tab .form-textual .sub-menu li a {margin-left: 0.8rem;}
+.vas-service-category .filter-tab .form-textual .sub-menu li a:focus-within, .vas-service-category .filter-tab .form-textual .sub-menu li a:focus, .vas-service-category .filter-tab .form-textual .sub-menu li a:hover {color: #209cff;}
+.vas-product {padding: 1rem; background: #fff; margin-bottom: 0.8rem; box-shadow: 0 2px 2px #ccc;border: 1px solid #eee; border-radius: 0; word-break: break-all; text-align: justify;}
+.vas-product .vas-product-content {padding: 0;}
+.vas-product .vas-product-content {padding-bottom: 1rem; border-bottom: 0;}
+.vas-product .vas-product-content .cht-item-info-toggle {background: url(https://www.cht.com.tw/home/eshop/img/ic/expand-arrow.png) no-repeat right top; background-size: contain; text-decoration: none; color: #333; font-weight: bold !important; display: block; padding-right: 1.8rem;-webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; display: -webkit-box;}
+.vas-product .vas-product-content .cht-item-info h3 {font-size: 1rem;}
+.vas-product .vas-product-content.show-item-info .cht-item-info-toggle {background: url(https://www.cht.com.tw/home/eshop/img/ic/collapse-arrow.png) no-repeat right top; background-size: contain;}
+.vas-product .vas-product-content.show-item-info .cht-item-info-content {padding-top: 0;}
+.vas-product .vas-product-content h2 {font-size: 1.6rem; margin-bottom: 0.8rem; display: flex; align-items: center;}
+.vas-product .vas-product-content h2 img {margin-right: 1.3rem; width: 80px; height: 80px; vertical-align: middle;}
+.vas-product .vas-product-content h2 .vas-product-title {max-width: 70%; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; display: -webkit-box;}
+.vas-product .vas-product-content .description {font-weight: normal; color: #333;}
+.vas-product  .vas-product-pkg-list .slider-section {width: 100%; padding-bottom: 0;}
+.vas-product  .vas-product-pkg-list .nekos .neko {padding: 0;}
+.vas-product .vas-product-pkg-list h2 {font-size: 1.4rem; margin-bottom: 0;}
+.vas-product .vas-product-pkg-list {background: #f5f5f5; padding: 1rem; margin: 0 -1.6rem; border-radius: 0 0 12px 12px;}
+.vas-product .vas-product-pkg-list .nekos.grid-3-one-in-mobile {margin: 0; padding: 0;}
+.vas-product .vas-product-pkg-list .nekos .neko .card {box-shadow: 0rem 0rem 0.3rem rgba(0, 0, 0, 0.15);}
+.vas-product .vas-product-pkg-list .nekos .neko .card:hover {box-shadow: 0rem 0rem 0.6rem rgba(0, 0, 0, 0.45);}
+
+.vas-product-pkg .nekos .h2 {font-size: 1.6rem; font-weight: bold; line-height: 1;}
+.vas-product-pkg .nekos .h2 sub {font-size: 0.8rem; vertical-align: baseline;}
+.vas-product-pkg .button {padding: 0.6em 1.8rem; font-size: 0.9rem; border: 1px solid #209cff;}
+.vas-product-pkg .button.button-white:hover {background: #209cff; color: #fff; box-shadow: none;}
+#modal-select-pkg {min-width: 300px; max-width: 85%; padding: 1rem;}
+#modal-select-pkg h3 {padding-right: 1rem;}
+#modal-select-pkg ul.modal-vas-select-pkg {list-style: none; margin: 0; padding: 0; font-size: 0.8rem; font-weight: normal;}
+#modal-select-pkg ul.modal-vas-select-pkg li {margin-bottom: 4px;}
+#modal-select-pkg label[data-cht-radio] input~i.data-symbol, #modal-select-pkg label[data-cht-radio] input:checked~i.data-symbol {background-size: contain; margin: 8px;}
+.fancybox-slide>.lightbox#modal-select-pkg button.fancybox-close-small {margin-right: 15px; margin-top: 15px;}
+
+
+/*220923 好康三部曲 元件化 css begin*/
+/*.page-vas {padding-top: 1rem;}
+.page-vas .vas-service-category .form-custom-radio label {font-size: 0.85rem; color: #333; border: 0;}
+.page-vas .form-custom-radio input[type=radio]:checked+label, .page-vas .form-custom-radio input[type=radio]:focus+label, .page-vas .vas-service-category .form-custom-radio label:hover {background: #333; color: #fff; border: 0; transition: all .4s;}
+.page-vas .vas-product {padding: 0; border: 0; margin-bottom: 0; box-shadow: none;}
+.page-vas .vas-product .vas-product-content {padding-bottom: 0;}
+.page-vas .vas-product .vas-product-content h2 {font-size: 1rem;}
+.page-vas .vas-product .vas-product-content .vas-product-txt {min-height: 110px; margin-bottom: 0.6rem; font-size: .8rem;}
+.page-vas .vas-product .vas-product-content .cht-item-info-more {padding-top: .4rem;*/ /*height: 22px;*/ /*text-align: center; border-bottom: 1px solid rgba(0, 0, 0, 0.1); height: 40px; margin-top: -30px; padding-top: 29px;}
+.page-vas .vas-product .vas-product-content .item-info-more {display: none;}
+.page-vas .vas-product .vas-product-content .show-item-info-more .item-info-more {display: block;}
+.page-vas .vas-product .vas-product-content img.desc-dots {width: 20px; height: auto; margin: 0 auto;}
+.page-vas .vas-product .vas-product-content .desc-dots.close {display: none;}
+.page-vas .vas-product .vas-product-content .show-item-info-more .desc-dots.open {display: none;}
+.page-vas .vas-product .vas-product-content .show-item-info-more .desc-dots.close {display: block;}
+.page-vas .vas-product .vas-product-content .item-info-detail {display: flex; flex-direction: row; justify-content: right; padding-top: .4rem;}
+.page-vas .vas-product .vas-product-content .item-info-detail img {width: 20px; margin-left: 2px;}
+.page-vas .vas-select-pid {margin: 1rem 0 0 0;}
+.page-vas .vas-select-pid .select-pid, .page-vas .vas-select-pid .select-discount {padding: 0.6rem 1rem; margin-bottom: .6rem; width: 100%;}
+@media screen and (max-width: 767px) {
+    div[data-seasonpromo-content-category-id="all-merge"] {display: none;}
+.page-vas .vas-filter .h3 {font-size: 1.6rem; margin: 1rem auto;}
+.page-vas .cht-list-item .cht-item-info-content {height: auto;}
+.page-vas .vas-filter {padding: 0 1rem; box-shadow: none;}
+#cat-all,#cat-ring,#cat-ent,#cat-life,#cat-read,#cat-is{display:block;position:relative;top:-60px;padding-top: 20px;visibility:hidden}
+#cat-is {padding: 0;}*/
+/*#cat-is {top: -140px;}*/
+/*#tab_1, #tab_2, #tab_3 {display: none;}
+#mtab_1,#mtab_2,#mtab_3{display:block;position:relative;top:-90px;padding-top: 0; visibility:hidden;}*/
+/*}*/
+/*220923 好康三部曲 元件化 css End*/
+
+.hami-note-block-event {padding-bottom: .6rem;}
+.hami-note-block-event img, .hami-note-block-a img, .hami-note-block-b img, .hami-note-block-c img {border-radius: 10px;}
+.hami-note-block-event {padding-bottom: .6rem;}
+.owl-theme[data-items-desktop='1'] .owl-nav .nav-circle-right {right: 5px;}
+.owl-theme[data-items-desktop='1'] .owl-nav .nav-circle-left {left: 5px;}
+.owl-theme .owl-nav .nav-circle-left, .owl-theme .owl-nav .owl-prev {display: flex; position: absolute; justify-content: center; align-items: center; width: 36px; height: 36px; background-color: rgba(255,255,255,0.8); border-radius: 50%; box-shadow: 0 3px 10px rgb(0 0 0 / 25%); cursor: pointer; transition: all .35s; user-select: none; left: 5px; border: 0; top: calc(50% - 38px);}
+.owl-theme .owl-nav .nav-circle-right, .owl-theme .owl-nav .owl-next {display: flex; position: absolute; justify-content: center; align-items: center; width: 36px; height: 36px; background-color: rgba(255,255,255,0.8); border-radius: 50%; box-shadow: 0 3px 10px rgb(0 0 0 / 25%); cursor: pointer; transition: all .35s; user-select: none; right: 5px; border: 0; top: calc(50% - 38px);}
+.owl-theme .owl-nav [class*=owl-]:hover {background: #fff; color: #999; box-shadow: 0 5px 20px rgb(0 0 0 / 15%);}
+
+
+
+
+/*221017 好康三部曲 元件化 css Begin*/
+ 
+.page-vas {background: none; padding-top: 1rem; padding-bottom: 1.6rem;}
+.page-vas .neko {flex-direction: column; padding-bottom: 0 !important; padding-top: 8px !important; margin-right: 1rem;}
+.page-vas .vas-service-category-list {padding: 0;}
+.page-vas.mobile-service-section .net-more a:after {transform: rotate(90deg); display: inline-block;}
+.page-vas .vas-service-category {display: flex; white-space: nowrap; overflow-x: auto;}
+.page-vas .vas-service-category .form-custom-radio label {font-size: 1rem; padding: .4rem 1.8rem; color: #333; border: 0; line-height: 1.6;}
+.page-vas .form-custom-radio input[type=radio]:checked+label, .page-vas .form-custom-radio input[type=radio]:focus+label, .page-vas .vas-service-category .form-custom-radio label:hover {background: #333; color: #fff; font-size: 1rem; padding: .4rem 1.8rem; border: 0; transition: all .4s;}
+.page-vas .card-wrapper {/*width: auto;*/ padding: 0.5rem 0.2rem 0.3rem 0.2rem; margin: 0;}
+.page-vas .card {width: 96%;}
+.page-vas .vas-product {padding: 0; border: 0; margin-bottom: 0; box-shadow: none;}
+.page-vas .vas-product .vas-product-content {padding-bottom: 0;}
+.page-vas .vas-product .vas-product-content h2 {font-size: 1.2rem;}
+.page-vas .vas-product .vas-product-content .vas-product-txt {min-height: 110px; margin-bottom: 0.6rem; font-size: .9rem;}
+.page-vas .vas-product .vas-product-content .cht-item-info-more {padding-top: .4rem; /*height: 22px;*/ text-align: center; border-bottom: 1px solid rgba(0, 0, 0, 0.1); height: 40px; margin-top: -30px; padding-top: 29px;}
+.page-vas .vas-product .vas-product-content .item-info-more {display: none;}
+.page-vas .vas-product .vas-product-content .show-item-info-more .item-info-more {display: block;}
+.page-vas .vas-product .vas-product-content img.desc-dots {width: 20px; height: auto; margin: 0 auto;}
+.page-vas .vas-product .vas-product-content .desc-dots.close {display: none;}
+.page-vas .vas-product .vas-product-content .show-item-info-more .desc-dots.open {display: none;}
+.page-vas .vas-product .vas-product-content .show-item-info-more .desc-dots.close {display: block;}
+.page-vas .vas-product .vas-product-content .item-info-detail {display: flex; flex-direction: row; justify-content: right; padding-top: .4rem;}
+.page-vas .vas-product .vas-product-content .item-info-detail img {width: 20px; margin-left: 2px;}
+.page-vas .vas-select-pid {margin: 1rem 0 0 0; display: flex; flex-direction: column; justify-content: space-between;}
+.page-vas .vas-select-pid .select-pid, .page-vas .vas-select-pid .select-discount {padding: 0.6rem 1rem; margin-bottom: .6rem; width: 100%;}
+.lightbox .sub-content {font-size: .9rem;}
+.lightbox .sub-content ul {list-style: none; margin: 0; line-height: 1.8rem;}
+.lightbox .sub-content ul li {display: flex; justify-content: space-between; align-items: center; width: 100%;}
+.lightbox .sub-content ul li label {user-select: initial;}
+.lightbox .sub-content ul li input {width: 18px; height: 18px;}
+.page-vas .owl-theme .owl-dots .owl-dot {margin-top: 1rem;}
+.page-vas .owl-theme .owl-dots .owl-dot span {width: 8px; height: 8px;}
+
+    /*div[data-seasonpromo-content-category-id="all-merge"] {display: none;}*/
+.page-vas .vas-filter .h3 {font-size: 1.6rem; margin: 1rem auto;}
+.page-vas .cht-list-item .cht-item-info-content {height: auto;}
+.page-vas .vas-filter {background: none; padding: 0; overflow: hidden; box-shadow: none;}
+#cat-all,#cat-ring,#cat-ent,#cat-life,#cat-read,#cat-is{display:block;position:relative;top:-60px;padding-top: 20px;visibility:hidden}
+#cat-is {padding: 0;}
+/*#cat-is {top: -140px;}*/
+/*#tab_1, #tab_2, #tab_3 {display: none;}
+#mtab_1,#mtab_2,#mtab_3{display:block;position:relative;top:-90px;padding-top: 0; visibility:hidden;}*/
+    
+/*221017 好康三部曲 元件化 css End*/
