@@ -9,12 +9,15 @@
   <!-- 引入 Signature Pad CDN -->
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
   <style>
-    /* 自訂醫療級過渡與細節 */
     body {
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    .step-content { transition: all 0.3s ease-in-out; }
+    /* 關鍵：強制禁止畫布上的預設觸控滑動行為，確保手機可順利簽名 */
+    #signature-pad {
+      touch-action: none;
+      -ms-touch-action: none;
+    }
   </style>
 </head>
 <body class="min-h-screen py-8 px-4 flex items-center justify-center">
@@ -76,7 +79,7 @@
           </div>
         </div>
         <div class="mt-6 flex justify-end">
-          <button type="button" onclick="switchStep(2)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition">下一步</button>
+          <button type="button" onclick="switchStep(2)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
         </div>
       </div>
 
@@ -102,8 +105,8 @@
         </div>
 
         <div class="mt-6 flex justify-between">
-          <button type="button" onclick="switchStep(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition">上一步</button>
-          <button type="button" onclick="switchStep(3)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition">下一步</button>
+          <button type="button" onclick="switchStep(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="button" onclick="switchStep(3)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
         </div>
       </div>
 
@@ -115,99 +118,4 @@
           <div class="grid grid-cols-2 gap-2 text-xs">
             <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>洗牙 / 定期檢查</span></label>
             <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>牙痛 / 急症處理</span></label>
-            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>根管治療 (抽神經)</span></label>
-            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>人工植牙諮詢</span></label>
-          </div>
-        </div>
-        <div class="mt-6 flex justify-between">
-          <button type="button" onclick="switchStep(2)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition">上一步</button>
-          <button type="button" onclick="switchStep(4)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition">下一步</button>
-        </div>
-      </div>
-
-      <!-- STEP 4 -->
-      <div class="step-pane hidden" data-step="4">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 看診偏好與電子簽名</h2>
-        
-        <div class="space-y-4 text-sm">
-          <div>
-            <label class="block font-medium text-slate-700 mb-2">看診心理狀態與需求：</label>
-            <div class="flex flex-wrap gap-2 text-xs">
-              <label class="border px-3 py-2 rounded-full cursor-pointer hover:bg-sky-50"><input type="checkbox" class="mr-1"> 非常怕痛</label>
-              <label class="border px-3 py-2 rounded-full cursor-pointer hover:bg-sky-50"><input type="checkbox" class="mr-1"> 容易緊張</label>
-              <label class="border px-3 py-2 rounded-full cursor-pointer hover:bg-sky-50"><input type="checkbox" class="mr-1"> 易嘔吐</label>
-            </div>
-          </div>
-
-          <label class="flex items-center space-x-2 text-xs font-medium cursor-pointer">
-            <input type="checkbox" required class="w-4 h-4 text-sky-600">
-            <span>本人同意接受全口數位 X 光攝影檢查（健保給付）</span>
-          </label>
-
-          <!-- 簽名畫布區 -->
-          <div>
-            <label class="block font-medium text-slate-700 mb-1 text-xs">病患數位簽名 <span class="text-red-500">*</span></label>
-            <div class="border-2 border-dashed border-slate-300 rounded-xl bg-slate-50 p-2 relative">
-              <canvas id="signature-pad" class="w-full h-28 bg-white rounded-lg cursor-crosshair touch-none"></canvas>
-              <button type="button" id="clearBtn" class="absolute bottom-3 right-4 text-xs text-rose-600 bg-white px-2 py-1 border rounded shadow-sm hover:bg-rose-50">清除重簽</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-6 flex justify-between">
-          <button type="button" onclick="switchStep(3)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition">上一步</button>
-          <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold shadow-md transition">確認送出初診單</button>
-        </div>
-      </div>
-
-    </form>
-  </div>
-
-  <script>
-    // 步驟切換邏輯
-    function switchStep(targetStep) {
-      document.querySelectorAll('.step-pane').forEach(el => el.classList.add('hidden'));
-      document.querySelector(`[data-step="${targetStep}"]`).classList.remove('hidden');
-
-      document.querySelectorAll('.step-ind').forEach((el, index) => {
-        if (index + 1 === targetStep) {
-          el.classList.add('text-white', 'border-b-2', 'border-white', 'opacity-100');
-          el.classList.remove('opacity-60');
-        } else {
-          el.classList.remove('text-white', 'border-b-2', 'border-white');
-          el.classList.add('opacity-60');
-        }
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 初始化 Signature Pad 觸控簽名
-    const canvas = document.getElementById('signature-pad');
-    const signaturePad = new SignaturePad(canvas, { penColor: 'rgb(3, 105, 161)' });
-
-    // 自動調整 Canvas 解析度防模糊
-    function resizeCanvas() {
-      const ratio = Math.max(window.devicePixelRatio || 1, 1);
-      canvas.width = canvas.offsetWidth * ratio;
-      canvas.height = canvas.offsetHeight * ratio;
-      canvas.getContext("2d").scale(ratio, ratio);
-      signaturePad.clear();
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    document.getElementById('clearBtn').addEventListener('click', () => {
-      signaturePad.clear();
-    });
-
-    document.getElementById('intakeForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (signaturePad.isEmpty()) {
-        alert('請先完成病患簽名後再送出！');
-        return;
-      }
-      alert('初診表單已成功送出！');
-    });
-  </script>
-</body>
-</html>
+            <label class="p-3 border rounded-xl flex items-center space-x-2 hover
