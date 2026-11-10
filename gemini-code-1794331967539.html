@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博識牙醫診所 - 數位初診資料表</title>
+  <!-- 引入 Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入 Signature Pad CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    /* 關鍵：強制禁止畫布上的預設觸控滑動行為，確保手機可順利簽名 */
+    #signature-pad {
+      touch-action: none;
+      -ms-touch-action: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen py-8 px-4 flex items-center justify-center">
+
+  <div class="max-w-xl w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-sky-100">
+    
+    <!-- 頂部診所標題與進度條 -->
+    <div class="bg-sky-700 text-white p-6 text-center">
+      <h1 class="text-xl font-bold tracking-wider">博識牙醫診所 - 初診健康評估表</h1>
+      <p class="text-xs text-sky-200 mt-1">請協助填寫真實健康狀況，以保障您的看診安全</p>
+      
+      <!-- 進度指示器 -->
+      <div class="flex justify-between mt-6 text-xs font-semibold text-sky-100 px-2">
+        <div id="indicator-1" class="step-ind text-white border-b-2 border-white pb-1">1. 基本資料</div>
+        <div id="indicator-2" class="step-ind opacity-60 pb-1">2. 全身病史</div>
+        <div id="indicator-3" class="step-ind opacity-60 pb-1">3. 牙科主訴</div>
+        <div id="indicator-4" class="step-ind opacity-60 pb-1">4. 確認簽名</div>
+      </div>
+    </div>
+
+    <!-- 表單主體 -->
+    <form id="intakeForm" class="p-6">
+
+      <!-- STEP 1 -->
+      <div class="step-pane" data-step="1">
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">1. 基本身分與聯絡資料</h2>
+        <div class="space-y-4 text-sm">
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">真實姓名 <span class="text-red-500">*</span></label>
+            <input type="text" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請輸入姓名">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-medium text-slate-700 mb-1">身分證字號 <span class="text-red-500">*</span></label>
+              <input type="text" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 outline-none" placeholder="例如：A123456789">
+            </div>
+            <div>
+              <label class="block font-medium text-slate-700 mb-1">性別 <span class="text-red-500">*</span></label>
+              <select class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 outline-none bg-white">
+                <option>男</option>
+                <option>女</option>
+                <option>其他</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-medium text-slate-700 mb-1">出生年月日 <span class="text-red-500">*</span></label>
+              <input type="date" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 outline-none">
+            </div>
+            <div>
+              <label class="block font-medium text-slate-700 mb-1">行動電話 <span class="text-red-500">*</span></label>
+              <input type="tel" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 outline-none" placeholder="0911-465-564">
+            </div>
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">居住地址</label>
+            <input type="text" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請輸入通訊地址">
+          </div>
+        </div>
+        <div class="mt-6 flex justify-end">
+          <button type="button" onclick="switchStep(2)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-pane hidden" data-step="2">
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">2. 全身病史與用藥風險評估</h2>
+        
+        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-4 text-xs text-amber-900 space-y-2">
+          <p class="font-bold">⚠️ 醫療安全關鍵確認（若有請勾選）</p>
+          <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>目前是否服用抗凝血劑或有凝血功能異常？</span></label>
+          <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>是否使用抗骨質疏鬆藥物（口服或針劑）？</span></label>
+          <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>頭頸部曾因腫瘤接受過手術或放射性治療？</span></label>
+        </div>
+
+        <div class="space-y-3 text-sm">
+          <label class="block font-medium text-slate-700">藥物過敏史：</label>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <label class="p-2 border rounded-lg flex items-center space-x-2 bg-slate-50 cursor-pointer"><input type="checkbox"><span>無特殊過敏</span></label>
+            <label class="p-2 border rounded-lg flex items-center space-x-2 bg-slate-50 cursor-pointer"><input type="checkbox"><span>盤尼西林 (Penicillin)</span></label>
+            <label class="p-2 border rounded-lg flex items-center space-x-2 bg-slate-50 cursor-pointer"><input type="checkbox"><span>阿斯匹靈 (Aspirin)</span></label>
+            <label class="p-2 border rounded-lg flex items-center space-x-2 bg-slate-50 cursor-pointer"><input type="checkbox"><span>磺胺類藥物</span></label>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-between">
+          <button type="button" onclick="switchStep(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="button" onclick="switchStep(3)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-pane hidden" data-step="3">
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">3. 今日主訴與牙科項目</h2>
+        <div class="space-y-3 text-sm">
+          <label class="block font-medium text-slate-700">本次就診主要目的（可複選）：</label>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>洗牙 / 定期檢查</span></label>
+            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>牙痛 / 急症處理</span></label>
+            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>根管治療 (抽神經)</span></label>
+            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>人工植牙諮詢</span></label>
+          </div>
+        </div>
+        <div class="mt-6 flex justify-between">
+          <button type="button" onclick="switchStep(2)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="button" onclick="switchStep(4)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-pane hidden" data-step="4">
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 看診偏好與電子簽名</h2>
+        
+        <div class="space-y-4 text-sm">
+          <div>
+            <label class="block font-medium text-slate-700 mb-2">看診心理狀態與需求：</label>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <label class="border px-3 py-2 rounded-full cursor-pointer hover:bg-sky-50"><input type="checkbox" class="mr-1"> 非常怕痛</label>
+              <label class="border px-3 py-2 rounded-full cursor-pointer hover:bg-sky-50"><input type="checkbox" class="mr-1"> 容易緊張</label>
+              <label class="border px-3 py-2 rounded-full cursor-pointer hover:bg-sky-50"><input type="checkbox" class="mr-1"> 易嘔吐</label>
+            </div>
+          </div>
+
+          <label class="flex items-center space-x-2 text-xs font-medium cursor-pointer">
+            <input type="checkbox" required class="w-4 h-4 text-sky-600">
+            <span>本人同意接受全口數位 X 光攝影檢查（健保給付）</span>
+          </label>
+
+          <!-- 簽名畫布區 -->
+          <div>
+            <label class="block font-medium text-slate-700 mb-1 text-xs">病患數位簽名 <span class="text-red-500">*</span></label>
+            <div class="border-2 border-dashed border-slate-300 rounded-xl bg-slate-50 p-2 relative">
+              <!-- 加入固定高度與背景色確保 Canvas 可見 -->
+              <canvas id="signature-pad" class="w-full h-36 bg-white rounded-lg cursor-crosshair block"></canvas>
+              <button type="button" id="clearBtn" class="absolute bottom-3 right-4 text-xs text-rose-600 bg-white px-3 py-1.5 border rounded-md shadow-sm hover:bg-rose-50 cursor-pointer">清除重簽</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-between">
+          <button type="button" onclick="switchStep(3)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold shadow-md transition cursor-pointer">確認送出初診單</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    let signaturePad = null;
+
+    // 步驟切換邏輯
+    function switchStep(targetStep) {
+      document.querySelectorAll('.step-pane').forEach(el => el.classList.add('hidden'));
+      const targetPane = document.querySelector(`[data-step="${targetStep}"]`);
+      if (targetPane) {
+        targetPane.classList.remove('hidden');
+      }
+
+      document.querySelectorAll('.step-ind').forEach((el, index) => {
+        if (index + 1 === targetStep) {
+          el.classList.add('text-white', 'border-b-2', 'border-white', 'opacity-100');
+          el.classList.remove('opacity-60');
+        } else {
+          el.classList.remove('text-white', 'border-b-2', 'border-white');
+          el.classList.add('opacity-60');
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // 當切換到第 4 步時，重新調整簽名畫布大小（確保切換隱藏後顯示時尺寸正確）
+      if (targetStep === 4 && signaturePad) {
+        setTimeout(resizeCanvas, 50);
+      }
+    }
+
+    // 初始化與調整 Canvas 畫布
+    function initSignaturePad() {
+      const canvas = document.getElementById('signature-pad');
+      if (!canvas) return;
+
+      signaturePad = new SignaturePad(canvas, { 
+        penColor: 'rgb(3, 105, 161)',
+        minWidth: 1,
+        maxWidth: 3
+      });
+
+      resizeCanvas();
+    }
+
+    function resizeCanvas() {
+      const canvas = document.getElementById('signature-pad');
+      if (!canvas || !signaturePad) return;
+
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      canvas.width = canvas.offsetWidth * ratio;
+      canvas.height = canvas.offsetHeight * ratio;
+      canvas.getContext("2d").scale(ratio, ratio);
+      
+      // 保留原本簽名或清除（切換步驟時建議保留原筆跡，此處不強制 clear）
+    }
+
+    // 頁面載入完成後初始化
+    window.addEventListener('DOMContentLoaded', () => {
+      initSignaturePad();
+
+      // 清除按鈕事件
+      const clearBtn = document.getElementById('clearBtn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          if (signaturePad) signaturePad.clear();
+        });
+      }
+
+      // 表單送出事件
+      const form = document.getElementById('intakeForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (!signaturePad || signaturePad.isEmpty()) {
+            alert('請先完成病患簽名後再送出！');
+            return;
+          }
+          const dataUrl = signaturePad.toDataURL('image/png');
+          console.log('簽名圖片資料 (Base64):', dataUrl);
+          alert('初診表單已成功送出！');
+        });
+      }
+    });
+
+    window.addEventListener('resize', resizeCanvas);
+  </script>
+</body>
+</html>
