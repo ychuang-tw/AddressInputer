@@ -34,7 +34,7 @@
         <div id="indicator-1" class="step-ind text-white border-b-2 border-white pb-1">1. 基本資料</div>
         <div id="indicator-2" class="step-ind opacity-60 pb-1">2. 醫療病史</div>
         <div id="indicator-3" class="step-ind opacity-60 pb-1">3. 用藥安全</div>
-        <div id="indicator-4" class="step-ind opacity-60 pb-1">4. 牙科主訴</div>
+        <div id="indicator-4" class="step-ind opacity-60 pb-1">4. 關注項目</div>
         <div id="indicator-5" class="step-ind opacity-60 pb-1">5. 確認簽名</div>
       </div>
     </div>
@@ -277,17 +277,37 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 4: 今日主訴與牙科項目 -->
+      <!-- STEP 4: 關注項目 -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="4">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 今日主訴與牙科項目</h2>
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 關注項目</h2>
         <div class="space-y-3 text-sm">
-          <label class="block font-medium text-slate-700">本次就診主要目的（可複選）：</label>
-          <div class="grid grid-cols-2 gap-2 text-xs">
-            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>洗牙 / 定期檢查</span></label>
-            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>牙痛 / 急症處理</span></label>
-            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>根管治療 (抽神經)</span></label>
-            <label class="p-3 border rounded-xl flex items-center space-x-2 hover:border-sky-500 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>人工植牙諮詢</span></label>
+          <label class="block font-medium text-slate-700">本次就診關注項目（可複選）：</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
+              <span class="font-medium text-slate-800">定期檢查/洗牙</span>
+            </label>
+            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
+              <span class="font-medium text-slate-800">牙痛/急症處理</span>
+            </label>
+            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
+              <span class="font-medium text-slate-800">蛀牙預防/治療</span>
+            </label>
+            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
+              <span class="font-medium text-slate-800">牙周病預防/治療</span>
+            </label>
+            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
+              <span class="font-medium text-slate-800">根管治療</span>
+            </label>
+            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
+              <span class="font-medium text-slate-800">缺牙補綴/假牙/植牙資訊</span>
+            </label>
           </div>
         </div>
         <div class="mt-6 flex justify-between">
