@@ -89,9 +89,15 @@
             </div>
           </div>
 
+          <!-- 居住地址 + 快速選址按鈕 -->
           <div>
-            <label class="block font-medium text-slate-700 mb-1">居住地址</label>
-            <input type="text" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請輸入通訊地址">
+            <div class="flex items-center justify-between mb-1">
+              <label for="addressInput" class="block font-medium text-slate-700">居住地址</label>
+              <button type="button" onclick="openAddressModal()" class="text-xs bg-sky-100 hover:bg-sky-200 text-sky-800 font-semibold px-2.5 py-1 rounded-md transition cursor-pointer flex items-center gap-1">
+                <span>📍 快速選址</span>
+              </button>
+            </div>
+            <input id="addressInput" type="text" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 outline-none" placeholder="點擊上方「快速選址」或手動輸入地址">
           </div>
         </div>
         <div class="mt-6 flex justify-end">
@@ -100,13 +106,12 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 2: 醫療病史 (新增頁面) -->
+      <!-- STEP 2: 醫療病史 -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="2">
         <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">2. 醫療病史</h2>
         
         <div class="space-y-5 text-sm">
-          <!-- 系統性疾病確認 -->
           <div>
             <p class="font-semibold text-slate-700 mb-2">請確認您是否有相關狀況（可複選）：</p>
             <div class="space-y-2 text-xs">
@@ -157,7 +162,6 @@
             </div>
           </div>
 
-          <!-- 日常健康習慣 -->
           <div class="pt-2 border-t border-slate-100">
             <p class="font-semibold text-slate-700 mb-2">日常健康習慣：</p>
             <div class="grid grid-cols-3 gap-2 text-xs">
@@ -176,7 +180,6 @@
             </div>
           </div>
 
-          <!-- 手術/住院病史 與 女性懷孕狀態 -->
           <div class="pt-2 border-t border-slate-100 space-y-3">
             <div>
               <label class="block font-semibold text-slate-700 mb-1 text-xs">手術 / 住院病史（若有請填寫原因）：</label>
@@ -204,25 +207,66 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 3: 醫療及用藥安全 (原第 2 頁更名) -->
+      <!-- STEP 3: 醫療及用藥安全 -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="3">
         <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">3. 醫療及用藥安全</h2>
         
-        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-4 text-xs text-amber-900 space-y-2">
+        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-5 text-xs text-amber-900 space-y-2.5">
           <p class="font-bold">⚠️ 醫療安全關鍵確認（若有請勾選）</p>
-          <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>目前是否服用抗凝血劑或有凝血功能異常？</span></label>
-          <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>是否使用抗骨質疏鬆藥物（口服或針劑）？</span></label>
-          <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 text-sky-600"><span>頭頸部曾因腫瘤接受過手術或放射性治療？</span></label>
+          <label class="flex items-start space-x-2.5 cursor-pointer">
+            <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+            <span>目前是否服用抗凝血劑或有凝血功能異常？</span>
+          </label>
+          <label class="flex items-start space-x-2.5 cursor-pointer">
+            <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+            <span>是否使用抗骨質疏鬆藥物（口服或針劑）？</span>
+          </label>
+          <label class="flex items-start space-x-2.5 cursor-pointer">
+            <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+            <span>頭頸部曾因腫瘤接受過手術或放射性治療？</span>
+          </label>
+          <label class="flex items-start space-x-2.5 cursor-pointer">
+            <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+            <span>患有慢性病病患，最近一次血糖、血壓、血脂數據，仍有數據為超過正常範圍</span>
+          </label>
         </div>
 
         <div class="space-y-3 text-sm">
-          <label class="block font-medium text-slate-700">藥物過敏史：</label>
+          <label class="block font-medium text-slate-700">藥物過敏史（可複選）：</label>
           <div class="grid grid-cols-2 gap-2 text-xs">
-            <label class="p-2 border rounded-lg flex items-center space-x-2 bg-slate-50 cursor-pointer"><input type="checkbox"><span>無特殊過敏</span></label>
-            <label class="p-2 border rounded-lg flex items-center space-x-2 bg-slate-50 cursor-pointer"><input type="checkbox"><span>盤尼西林 (Penicillin)</span></label>
-            <label class="p-2 border rounded-lg flex items-center space-x-2 bg-slate-50 cursor-pointer"><input type="checkbox"><span>阿斯匹靈 (Aspirin)</span></label>
-            <label class="p-2 border rounded-lg flex items-center space-x-2 bg-slate-50 cursor-pointer"><input type="checkbox"><span>磺胺類藥物</span></label>
+            <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600">
+              <span>無特殊過敏</span>
+            </label>
+            <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600">
+              <span>盤尼西林 (Penicillin)</span>
+            </label>
+            <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600">
+              <span>阿斯匹靈 (Aspirin)</span>
+            </label>
+            <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600">
+              <span>磺胺類藥物</span>
+            </label>
+            <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600">
+              <span>止痛藥(NSAID)</span>
+            </label>
+            <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 text-sky-600">
+              <span>比林類(Pyrines)</span>
+            </label>
+          </div>
+
+          <div class="p-3 border border-slate-200 rounded-lg bg-slate-50/70">
+            <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer mb-2">
+              <input type="checkbox" class="w-4 h-4 text-sky-600">
+              <span>其他（請填寫）：</span>
+            </label>
+            <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫其他過敏藥物或食物名稱">
           </div>
         </div>
 
@@ -233,7 +277,7 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 4: 今日主訴與牙科項目 (原第 3 頁) -->
+      <!-- STEP 4: 今日主訴與牙科項目 -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="4">
         <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 今日主訴與牙科項目</h2>
@@ -253,7 +297,7 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 5: 看診偏好與電子簽名 (原第 4 頁) -->
+      <!-- STEP 5: 看診偏好與電子簽名 -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="5">
         <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">5. 看診偏好與電子簽名</h2>
@@ -292,6 +336,34 @@
     </form>
   </div>
 
+  <!-- ========================================== -->
+  <!-- 快速選址 Modal (嵌入 AddressPage.html) -->
+  <!-- ========================================== -->
+  <div id="addressModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6">
+    <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <!-- Modal Header -->
+      <div class="bg-sky-700 text-white px-4 py-3 flex items-center justify-between">
+        <span class="font-bold text-sm">📍 快速地址輸入器</span>
+        <button type="button" onclick="closeAddressModal()" class="text-sky-100 hover:text-white text-lg font-bold px-2 cursor-pointer">&times;</button>
+      </div>
+      
+      <!-- Embedded AddressPage.html -->
+      <div class="flex-1 overflow-y-auto bg-slate-50">
+        <iframe 
+          id="addressFrame" 
+          src="https://ychuang-tw.github.io/AddressInputer/AddressPage.html" 
+          class="w-full h-[460px] border-0 block"
+          title="快速地址選擇器">
+        </iframe>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="bg-slate-100 px-4 py-2.5 border-t flex justify-end items-center">
+        <button type="button" onclick="closeAddressModal()" class="bg-slate-300 hover:bg-slate-400 text-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium cursor-pointer">關閉視窗</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     let signaturePad = null;
 
@@ -313,11 +385,38 @@
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // 簽名板已移至第 5 步，切換到第 5 步時重新調整畫布尺寸
       if (targetStep === 5 && signaturePad) {
         setTimeout(resizeCanvas, 50);
       }
     }
+
+    // 開啟 / 關閉快速選址視窗
+    window.openAddressModal = function() {
+      document.getElementById('addressModal').classList.remove('hidden');
+    }
+
+    window.closeAddressModal = function() {
+      document.getElementById('addressModal').classList.add('hidden');
+    }
+
+    // 監聽來自 AddressPage.html (Option A: postMessage) 的地址資料
+    window.addEventListener('message', (event) => {
+      if (event.origin !== 'https://ychuang-tw.github.io') return;
+
+      const data = event.data;
+      const selectedAddr = typeof data === 'string' 
+        ? data 
+        : (data?.address || data?.fullAddress);
+
+      if (selectedAddr) {
+        const addressInput = document.getElementById('addressInput');
+        if (addressInput) {
+          addressInput.value = selectedAddr.trim();
+          addressInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        closeAddressModal();
+      }
+    });
 
     function initSignaturePad() {
       const canvas = document.getElementById('signature-pad');
