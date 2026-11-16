@@ -24,18 +24,17 @@
 
   <div class="max-w-xl w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-sky-100">
     
-    <!-- 頂部診所標題與五步驟進度條 -->
+    <!-- 頂部診所標題與四步驟進度條 -->
     <div class="bg-sky-700 text-white p-6 text-center">
       <h1 class="text-xl font-bold tracking-wider">博識牙醫診所 - 初診健康評估表</h1>
       <p class="text-xs text-sky-200 mt-1">請協助填寫真實健康狀況，以保障您的看診安全</p>
       
-      <!-- 進度指示器 (5 Steps) -->
-      <div class="flex justify-between mt-6 text-[11px] sm:text-xs font-semibold text-sky-100 px-1">
+      <!-- 進度指示器 (4 Steps) -->
+      <div class="flex justify-between mt-6 text-xs font-semibold text-sky-100 px-2">
         <div id="indicator-1" class="step-ind text-white border-b-2 border-white pb-1">1. 基本資料</div>
         <div id="indicator-2" class="step-ind opacity-60 pb-1">2. 醫療病史</div>
         <div id="indicator-3" class="step-ind opacity-60 pb-1">3. 用藥安全</div>
-        <div id="indicator-4" class="step-ind opacity-60 pb-1">4. 關注項目</div>
-        <div id="indicator-5" class="step-ind opacity-60 pb-1">5. 確認簽名</div>
+        <div id="indicator-4" class="step-ind opacity-60 pb-1">4. 心理狀態與簽名</div>
       </div>
     </div>
 
@@ -163,7 +162,7 @@
           </div>
 
           <div class="pt-2 border-t border-slate-100">
-            <p class="font-semibold text-slate-700 mb-2">日常健康習慣：</p>
+            <p class="font-semibold text-slate-700 mb-2">日常習慣：</p>
             <div class="grid grid-cols-3 gap-2 text-xs">
               <label class="p-2.5 border border-slate-200 rounded-lg flex items-center justify-center space-x-2 bg-slate-50 hover:bg-sky-50 cursor-pointer">
                 <input type="checkbox" class="w-4 h-4 text-sky-600">
@@ -277,54 +276,14 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 4: 關注項目 -->
+      <!-- STEP 4: 就診心理狀態與電子簽名 -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="4">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 關注項目</h2>
-        <div class="space-y-3 text-sm">
-          <label class="block font-medium text-slate-700">本次就診關注項目（可複選）：</label>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
-              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
-              <span class="font-medium text-slate-800">定期檢查/洗牙</span>
-            </label>
-            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
-              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
-              <span class="font-medium text-slate-800">牙痛/急症處理</span>
-            </label>
-            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
-              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
-              <span class="font-medium text-slate-800">蛀牙預防/治療</span>
-            </label>
-            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
-              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
-              <span class="font-medium text-slate-800">牙周病預防/治療</span>
-            </label>
-            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
-              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
-              <span class="font-medium text-slate-800">根管治療</span>
-            </label>
-            <label class="p-3 border border-slate-200 rounded-xl flex items-center space-x-2.5 hover:border-sky-500 bg-slate-50/50 cursor-pointer">
-              <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
-              <span class="font-medium text-slate-800">缺牙補綴/假牙/植牙資訊</span>
-            </label>
-          </div>
-        </div>
-        <div class="mt-6 flex justify-between">
-          <button type="button" onclick="switchStep(3)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
-          <button type="button" onclick="switchStep(5)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
-        </div>
-      </div>
-
-      <!-- ========================================== -->
-      <!-- STEP 5: 看診偏好與電子簽名 -->
-      <!-- ========================================== -->
-      <div class="step-pane hidden" data-step="5">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">5. 看診偏好與電子簽名</h2>
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 需求評估及電子簽名</h2>
         
-        <div class="space-y-4 text-sm">
+        <div class="space-y-5 text-sm">
           <div>
-            <label class="block font-medium text-slate-700 mb-2">看診心理狀態與需求：</label>
+            <label class="block font-medium text-slate-700 mb-2">心理狀態與需求（可複選）：</label>
             <div class="flex flex-wrap gap-2 text-xs">
               <label class="border px-3 py-2 rounded-full cursor-pointer hover:bg-sky-50"><input type="checkbox" class="mr-1"> 非常怕痛</label>
               <label class="border px-3 py-2 rounded-full cursor-pointer hover:bg-sky-50"><input type="checkbox" class="mr-1"> 容易緊張</label>
@@ -332,9 +291,44 @@
             </div>
           </div>
 
-          <label class="flex items-center space-x-2 text-xs font-medium cursor-pointer">
+          <!-- 過去就診不愉快經驗 -->
+          <div>
+            <label class="block font-medium text-slate-700 mb-2">過去就診不愉快經驗（可複選）：</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>等候太久</span>
+              </label>
+              <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>治療過程疼痛</span>
+              </label>
+              <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>感覺不衛生</span>
+              </label>
+              <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>工作人員態度差</span>
+              </label>
+              <label class="p-2.5 border border-slate-200 rounded-lg flex items-center space-x-2 bg-slate-50 hover:border-sky-400 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>專業性不足</span>
+              </label>
+            </div>
+
+            <div class="mt-2 p-3 border border-slate-200 rounded-lg bg-slate-50/70">
+              <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer mb-2">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>其他：</span>
+              </label>
+              <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫其他不愉快經驗">
+            </div>
+          </div>
+
+          <label class="flex items-center space-x-2 text-xs font-medium cursor-pointer pt-2 border-t">
             <input type="checkbox" required class="w-4 h-4 text-sky-600">
-            <span>本人同意接受全口數位 X 光攝影檢查（健保給付）</span>
+            <span>本人同意接受全口數位 X 光攝影檢查（初診及全口檢查已逾2年者由健保給付，無額外費用）</span>
           </label>
 
           <!-- 簽名畫布區 -->
@@ -348,7 +342,7 @@
         </div>
 
         <div class="mt-6 flex justify-between">
-          <button type="button" onclick="switchStep(4)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="button" onclick="switchStep(3)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
           <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold shadow-md transition cursor-pointer">確認送出初診單</button>
         </div>
       </div>
@@ -405,7 +399,8 @@
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      if (targetStep === 5 && signaturePad) {
+      // 簽名板位於第 4 步，切換到第 4 步時重新調整畫布尺寸
+      if (targetStep === 4 && signaturePad) {
         setTimeout(resizeCanvas, 50);
       }
     }
