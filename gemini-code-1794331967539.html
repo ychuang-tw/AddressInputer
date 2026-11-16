@@ -13,7 +13,7 @@
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    /* 關鍵：強制禁止畫布上的預設觸控滑動行為，確保手機可順利簽名 */
+    /* 強制禁止畫布上的預設觸控滑動行為，確保手機可順利簽名 */
     #signature-pad {
       touch-action: none;
       -ms-touch-action: none;
@@ -24,24 +24,27 @@
 
   <div class="max-w-xl w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-sky-100">
     
-    <!-- 頂部診所標題與進度條 -->
+    <!-- 頂部診所標題與五步驟進度條 -->
     <div class="bg-sky-700 text-white p-6 text-center">
       <h1 class="text-xl font-bold tracking-wider">博識牙醫診所 - 初診健康評估表</h1>
       <p class="text-xs text-sky-200 mt-1">請協助填寫真實健康狀況，以保障您的看診安全</p>
       
-      <!-- 進度指示器 -->
-      <div class="flex justify-between mt-6 text-xs font-semibold text-sky-100 px-2">
+      <!-- 進度指示器 (5 Steps) -->
+      <div class="flex justify-between mt-6 text-[11px] sm:text-xs font-semibold text-sky-100 px-1">
         <div id="indicator-1" class="step-ind text-white border-b-2 border-white pb-1">1. 基本資料</div>
-        <div id="indicator-2" class="step-ind opacity-60 pb-1">2. 全身病史</div>
-        <div id="indicator-3" class="step-ind opacity-60 pb-1">3. 牙科主訴</div>
-        <div id="indicator-4" class="step-ind opacity-60 pb-1">4. 確認簽名</div>
+        <div id="indicator-2" class="step-ind opacity-60 pb-1">2. 醫療病史</div>
+        <div id="indicator-3" class="step-ind opacity-60 pb-1">3. 用藥安全</div>
+        <div id="indicator-4" class="step-ind opacity-60 pb-1">4. 牙科主訴</div>
+        <div id="indicator-5" class="step-ind opacity-60 pb-1">5. 確認簽名</div>
       </div>
     </div>
 
     <!-- 表單主體 -->
     <form id="intakeForm" class="p-6">
 
-      <!-- STEP 1 -->
+      <!-- ========================================== -->
+      <!-- STEP 1: 基本身分與聯絡資料 -->
+      <!-- ========================================== -->
       <div class="step-pane" data-step="1">
         <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">1. 基本身分與聯絡資料</h2>
         <div class="space-y-4 text-sm">
@@ -74,7 +77,7 @@
             </div>
           </div>
           
-          <!-- 新增：Email 與 公司/職業 左右並排一列 -->
+          <!-- Email 與 公司/職業 左右並排 -->
           <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block font-medium text-slate-700 mb-1">電子郵件 (Email)</label>
@@ -96,9 +99,115 @@
         </div>
       </div>
 
-      <!-- STEP 2 -->
+      <!-- ========================================== -->
+      <!-- STEP 2: 醫療病史 (新增頁面) -->
+      <!-- ========================================== -->
       <div class="step-pane hidden" data-step="2">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">2. 全身病史與用藥風險評估</h2>
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">2. 醫療病史</h2>
+        
+        <div class="space-y-5 text-sm">
+          <!-- 系統性疾病確認 -->
+          <div>
+            <p class="font-semibold text-slate-700 mb-2">請確認您是否有相關狀況（可複選）：</p>
+            <div class="space-y-2 text-xs">
+              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+                <span><strong class="text-slate-800 text-sm block mb-0.5">心血管疾病</strong>如：心臟病/瓣膜缺損/閉鎖不全、心導管/支架、心絞痛/心肌梗塞、高低血壓</span>
+              </label>
+
+              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+                <span><strong class="text-slate-800 text-sm block mb-0.5">代謝性疾病</strong>如：糖尿病、甲狀腺功能亢進/低下</span>
+              </label>
+
+              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+                <span><strong class="text-slate-800 text-sm block mb-0.5">自體免疫疾病</strong>如：紅斑性狼瘡、風溼性關節炎、乾燥症、器官移植等</span>
+              </label>
+
+              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+                <span><strong class="text-slate-800 text-sm block mb-0.5">血液相關疾病</strong>如：凝血功能異常、貧血、蠶豆症等</span>
+              </label>
+
+              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+                <span><strong class="text-slate-800 text-sm block mb-0.5">臟器疾病</strong>如：胃/十二指腸潰瘍、腎臟疾病、透析(洗腎)</span>
+              </label>
+
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60">
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
+                  <span class="text-slate-800 text-sm font-bold">良/惡性腫瘤(癌症)</span>
+                </label>
+                <div class="mt-2 pl-7">
+                  <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請註明部位或病名">
+                </div>
+              </div>
+
+              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+                <span><strong class="text-slate-800 text-sm block mb-0.5">傳染性疾病</strong>如：肺結核、ABCD型肝炎、人類乳突病毒(HPV)、人類免疫缺乏病毒(HIV)等</span>
+              </label>
+
+              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+                <span><strong class="text-slate-800 text-sm block mb-0.5">其他頭頸部相關疾病</strong>如：鼻竇炎、口腔黏膜異常、口乾症、張口受限、顳顎關節疾病等</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 日常健康習慣 -->
+          <div class="pt-2 border-t border-slate-100">
+            <p class="font-semibold text-slate-700 mb-2">日常健康習慣：</p>
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <label class="p-2.5 border border-slate-200 rounded-lg flex items-center justify-center space-x-2 bg-slate-50 hover:bg-sky-50 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>抽菸</span>
+              </label>
+              <label class="p-2.5 border border-slate-200 rounded-lg flex items-center justify-center space-x-2 bg-slate-50 hover:bg-sky-50 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>酗酒</span>
+              </label>
+              <label class="p-2.5 border border-slate-200 rounded-lg flex items-center justify-center space-x-2 bg-slate-50 hover:bg-sky-50 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-sky-600">
+                <span>嚼食檳榔</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 手術/住院病史 與 女性懷孕狀態 -->
+          <div class="pt-2 border-t border-slate-100 space-y-3">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1 text-xs">手術 / 住院病史（若有請填寫原因）：</label>
+              <input type="text" class="w-full p-2.5 border border-slate-300 rounded-lg text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫原因（無則免填）">
+            </div>
+
+            <div class="p-3 bg-pink-50/70 border border-pink-200 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-pink-900 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-pink-600">
+                <span>懷孕中（請女性填答）</span>
+              </label>
+              <div class="flex items-center space-x-2 text-xs text-pink-900">
+                <span>週數：</span>
+                <input type="number" min="1" max="42" class="w-20 p-1.5 border border-pink-300 rounded-lg bg-white text-center focus:ring-2 focus:ring-pink-400 outline-none" placeholder="週">
+                <span>週</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-between">
+          <button type="button" onclick="switchStep(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="button" onclick="switchStep(3)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- STEP 3: 醫療及用藥安全 (原第 2 頁更名) -->
+      <!-- ========================================== -->
+      <div class="step-pane hidden" data-step="3">
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">3. 醫療及用藥安全</h2>
         
         <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-4 text-xs text-amber-900 space-y-2">
           <p class="font-bold">⚠️ 醫療安全關鍵確認（若有請勾選）</p>
@@ -118,14 +227,16 @@
         </div>
 
         <div class="mt-6 flex justify-between">
-          <button type="button" onclick="switchStep(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
-          <button type="button" onclick="switchStep(3)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
+          <button type="button" onclick="switchStep(2)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="button" onclick="switchStep(4)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
         </div>
       </div>
 
-      <!-- STEP 3 -->
-      <div class="step-pane hidden" data-step="3">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">3. 今日主訴與牙科項目</h2>
+      <!-- ========================================== -->
+      <!-- STEP 4: 今日主訴與牙科項目 (原第 3 頁) -->
+      <!-- ========================================== -->
+      <div class="step-pane hidden" data-step="4">
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 今日主訴與牙科項目</h2>
         <div class="space-y-3 text-sm">
           <label class="block font-medium text-slate-700">本次就診主要目的（可複選）：</label>
           <div class="grid grid-cols-2 gap-2 text-xs">
@@ -136,14 +247,16 @@
           </div>
         </div>
         <div class="mt-6 flex justify-between">
-          <button type="button" onclick="switchStep(2)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
-          <button type="button" onclick="switchStep(4)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
+          <button type="button" onclick="switchStep(3)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="button" onclick="switchStep(5)" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition cursor-pointer">下一步</button>
         </div>
       </div>
 
-      <!-- STEP 4 -->
-      <div class="step-pane hidden" data-step="4">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 看診偏好與電子簽名</h2>
+      <!-- ========================================== -->
+      <!-- STEP 5: 看診偏好與電子簽名 (原第 4 頁) -->
+      <!-- ========================================== -->
+      <div class="step-pane hidden" data-step="5">
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">5. 看診偏好與電子簽名</h2>
         
         <div class="space-y-4 text-sm">
           <div>
@@ -171,7 +284,7 @@
         </div>
 
         <div class="mt-6 flex justify-between">
-          <button type="button" onclick="switchStep(3)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
+          <button type="button" onclick="switchStep(4)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-xl font-medium transition cursor-pointer">上一步</button>
           <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold shadow-md transition cursor-pointer">確認送出初診單</button>
         </div>
       </div>
@@ -200,7 +313,8 @@
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      if (targetStep === 4 && signaturePad) {
+      // 簽名板已移至第 5 步，切換到第 5 步時重新調整畫布尺寸
+      if (targetStep === 5 && signaturePad) {
         setTimeout(resizeCanvas, 50);
       }
     }
