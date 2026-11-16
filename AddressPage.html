@@ -185,7 +185,7 @@
         </article>
         地址:
         <input type="text" name="address" id="address" style="width:100%" />
-        
+        <button onclick=PostAddress()>確認</button>
     </section>
 
     <script type="text/javascript">
@@ -412,6 +412,13 @@
         function ChangeCase(elem) {
             elem.value = elem.value.toUpperCase();
         }
+        function PostAddress(){
+        window.parent.postMessage({
+          type: 'ADDRESS_SELECTED',
+          address: $("input#Address").val() // e.g., "台北市中山區..."
+            }, 'https://ychuang-tw.github.io');
+        }
+        
     </script>
 </body>
 </html>
