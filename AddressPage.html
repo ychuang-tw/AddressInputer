@@ -273,7 +273,7 @@
             if (storageAvailable("localStorage")) {
                 var y = localStorage.getItem(city);
                 if (y == null || y == undefined) {
-                    $.getJSON(baseUrl + city + ".json", function (x) { localStorage.setItem(city, JSON.stringify(x)); ParseCityData(x); });
+                    $.getJSON(baseUrl + city + ".json", function (x) { localStorage.setItem(city, JSON.stringify(x)); console.log(x); ParseCityData(x); });
                 }
                 else {
                     ParseCityData(JSON.parse(y));
