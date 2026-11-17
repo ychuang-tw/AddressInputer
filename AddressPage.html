@@ -359,7 +359,7 @@
             ConcatAddress(); // Ensure #address updates whenever roads are rebuilt
         }
         $(function () {
-            $("input#address").css("width", "100%");
+            $("input#address").css("width", "80%");
             var params = new URLSearchParams(location.search);
             if (location.search == '' || params.get("address")==''|| params.get("address")==null||params.get("address")==undefined ) {
                 var cityJSON;
