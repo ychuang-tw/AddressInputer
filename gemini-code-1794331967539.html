@@ -251,29 +251,36 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 3: 醫療及用藥安全 -->
+      <!-- STEP 3: 醫療及用藥安全 (帶連動關鍵確認說明框) -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="3">
         <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">3. 醫療及用藥安全</h2>
         
         <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-5 text-xs text-amber-900 space-y-2.5">
-          <p class="font-bold">⚠️ 醫療安全關鍵確認（若有請勾選）</p>
+          <p class="font-bold mb-1">⚠️ 醫療安全關鍵確認（若有請勾選）：</p>
+          
           <label class="flex items-start space-x-2.5 cursor-pointer">
-            <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+            <input type="checkbox" class="safety-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0">
             <span>目前是否服用抗凝血劑或有凝血功能異常？</span>
           </label>
           <label class="flex items-start space-x-2.5 cursor-pointer">
-            <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+            <input type="checkbox" class="safety-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0">
             <span>是否使用抗骨質疏鬆藥物（口服或針劑）？</span>
           </label>
           <label class="flex items-start space-x-2.5 cursor-pointer">
-            <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+            <input type="checkbox" class="safety-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0">
             <span>頭頸部曾因腫瘤接受過手術或放射性治療？</span>
           </label>
           <label class="flex items-start space-x-2.5 cursor-pointer">
-            <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+            <input type="checkbox" class="safety-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0">
             <span>患有慢性病病患，最近一次血糖、血壓、血脂數據，仍有數據為超過正常範圍</span>
           </label>
+
+          <!-- 勾選任一關鍵確認時展開的詳細說明輸入框 -->
+          <div id="safety-detail-box" class="hidden pt-2 mt-2 border-t border-amber-200/80">
+            <label class="block font-semibold text-amber-950 mb-1">請填寫上述勾選項目之詳細說明/數值：</label>
+            <input type="text" class="w-full p-2 border border-amber-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none text-slate-800" placeholder="例如：血壓偏高 (140/90 mmHg) 或藥物名稱">
+          </div>
         </div>
 
         <div class="space-y-3 text-sm">
@@ -430,10 +437,10 @@
         </iframe>
       </div>
 
-      <!-- Modal Footer: 確認與關閉視窗按鈕並排對齊且樣式一致 -->
+      <!-- Modal Footer: 確認按鈕在左、關閉視窗按鈕在右 -->
       <div class="bg-slate-100 px-4 py-2.5 border-t flex justify-end items-center gap-2">
-        <button type="button" onclick="closeAddressModal()" class="bg-slate-300 hover:bg-slate-400 text-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer">關閉視窗</button>
         <button type="button" onclick="confirmAddressSelection()" class="bg-sky-600 hover:bg-sky-700 text-white px-4 py-1.5 rounded-lg text-xs font-medium shadow-xs transition cursor-pointer">確認</button>
+        <button type="button" onclick="closeAddressModal()" class="bg-slate-300 hover:bg-slate-400 text-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer">關閉視窗</button>
       </div>
     </div>
   </div>
@@ -559,6 +566,28 @@
             }
           }
         });
+      });
+
+      // 第 3 頁「醫療安全關鍵確認」選項勾選連動下方統一輸入框邏輯
+      const safetyCheckboxes = document.querySelectorAll('.safety-checkbox');
+      const safetyDetailBox = document.getElementById('safety-detail-box');
+      const safetyInput = safetyDetailBox ? safetyDetailBox.querySelector('input') : null;
+
+      function updateSafetyDetailVisibility() {
+        const anyChecked = Array.from(safetyCheckboxes).some(cb => cb.checked);
+        if (safetyDetailBox) {
+          if (anyChecked) {
+            safetyDetailBox.classList.remove('hidden');
+            if (safetyInput) safetyInput.focus();
+          } else {
+            safetyDetailBox.classList.add('hidden');
+            if (safetyInput) safetyInput.value = '';
+          }
+        }
+      }
+
+      safetyCheckboxes.forEach(cb => {
+        cb.addEventListener('change', updateSafetyDetailVisibility);
       });
 
       const clearBtn = document.getElementById('clearBtn');
