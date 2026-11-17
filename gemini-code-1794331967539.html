@@ -371,7 +371,7 @@
           </div>
 
           <label class="flex items-center space-x-2 text-xs font-medium cursor-pointer pt-2 border-t">
-            <input type="checkbox" required class="w-4 h-4 text-sky-600">
+            <input type="checkbox" class="w-4 h-4 text-sky-600">
             <span>本人同意接受全口數位 X 光攝影檢查（健保給付）</span>
           </label>
 
@@ -415,9 +415,10 @@
         </iframe>
       </div>
 
-      <!-- Modal Footer -->
-      <div class="bg-slate-100 px-4 py-2.5 border-t flex justify-end items-center">
-        <button type="button" onclick="closeAddressModal()" class="bg-slate-300 hover:bg-slate-400 text-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium cursor-pointer">關閉視窗</button>
+      <!-- Modal Footer: 確認與關閉視窗按鈕並排對齊且樣式一致 -->
+      <div class="bg-slate-100 px-4 py-2.5 border-t flex justify-end items-center gap-2">
+        <button type="button" onclick="closeAddressModal()" class="bg-slate-300 hover:bg-slate-400 text-slate-700 px-4 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer">關閉視窗</button>
+        <button type="button" onclick="confirmAddressSelection()" class="bg-sky-600 hover:bg-sky-700 text-white px-4 py-1.5 rounded-lg text-xs font-medium shadow-xs transition cursor-pointer">確認</button>
       </div>
     </div>
   </div>
@@ -457,7 +458,31 @@
       document.getElementById('addressModal').classList.add('hidden');
     }
 
-    // 監聽來自 AddressPage.html (Option A: postMessage) 的地址資料
+    // 點擊外部「確認」按鈕：直接從同網域 iframe 的 #Address 取得地址並填入主表單
+    window.confirmAddressSelection = function() {
+      try {
+        const frame = document.getElementById('addressFrame');
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        const addrEl = doc.getElementById('Address') || doc.querySelector('input[type="text"], textarea');
+        const selectedAddr = addrEl ? addrEl.value.trim() : '';
+
+        if (!selectedAddr) {
+          alert('請先在上方選單中完成地址選取！');
+          return;
+        }
+
+        const addressInput = document.getElementById('addressInput');
+        if (addressInput) {
+          addressInput.value = selectedAddr;
+          addressInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        closeAddressModal();
+      } catch (err) {
+        console.warn('讀取地址時發生錯誤：', err);
+      }
+    }
+
+    // 保留 postMessage 監聽器以相容 iframe 主動傳送訊息
     window.addEventListener('message', (event) => {
       if (event.origin !== 'https://ychuang-tw.github.io') return;
 
@@ -515,7 +540,7 @@
             } else {
               detailBox.classList.add('hidden');
               const input = detailBox.querySelector('input');
-              if (input) input.value = ''; // 取消勾選時清空內容
+              if (input) input.value = '';
             }
           }
         });
