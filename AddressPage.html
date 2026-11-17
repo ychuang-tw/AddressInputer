@@ -184,9 +184,25 @@
                 </div>
             </div>
         </article>
-        地址:
-        <input type="text" name="Address" id="Address" style="width:100%" />
-        <button onclick=PostAddress()>確認</button>
+        <!-- 地址顯示與確認按鈕的容器 (同一列) -->
+        <div class="flex items-center gap-2 w-full mt-4">
+          <!-- 地址結果輸入框 -->
+          <input 
+            type="text" 
+            id="Address" 
+            class="flex-1 p-3 border border-slate-300 rounded-xl bg-slate-50 text-sm focus:ring-2 focus:ring-sky-500 outline-none" 
+            placeholder="請在上方選擇縣市、鄉鎮與路段" 
+            readonly
+          >
+          
+          <!-- 美化後的確認按鈕 (與 Address 欄位同高、同列) -->
+          <button 
+            type="button" 
+            id="confirmAddressBtn"
+            class="bg-sky-600 hover:bg-sky-700 text-white font-medium px-5 py-3 rounded-xl shadow-md transition shrink-0 cursor-pointer text-sm">
+            確認
+          </button>
+        </div>
     </section>
 
     <script type="text/javascript">
@@ -399,12 +415,29 @@
             elem.value = elem.value.toUpperCase();
         }
         function PostAddress(){
-        window.parent.postMessage({
-          type: 'ADDRESS_SELECTED',
-          address: $("input#Address").val() // e.g., "台北市中山區..."
-            }, 'https://ychuang-tw.github.io');
-        }
-        
+            document.getElementById('confirmAddressBtn').addEventListener('click', () => {
+            const addressField = document.getElementById('Address');
+            const finalAddress = addressField ? addressField.value.trim() : '';
+            
+            if (!finalAddress) {
+            alert('請先完整選擇您的地址！');
+            return;
+            }
+            
+            // 透過 postMessage 傳回母網頁 (index.html)
+            if (window.parent && window.parent !== window) {
+            window.parent.postMessage(
+              {
+                type: 'ADDRESS_SELECTED',
+                address: finalAddress
+              },
+              'https://ychuang-tw.github.io'
+            );
+            } else {
+            // 獨立開啟時的備援提示
+            alert('已確認地址：' + finalAddress);
+            }
+        });                
     </script>
 </body>
 </html>
