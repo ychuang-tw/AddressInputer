@@ -105,64 +105,109 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 2: 醫療病史 -->
+      <!-- STEP 2: 醫療病史 (帶連動明細輸入框) -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="2">
         <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">2. 醫療病史</h2>
         
-        <div class="space-y-5 text-sm">
+        <div class="space-y-4 text-sm">
           <div>
-            <p class="font-semibold text-slate-700 mb-2">請確認您是否有相關狀況（可複選）：</p>
-            <div class="space-y-2 text-xs">
-              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
-                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
-                <span><strong class="text-slate-800 text-sm block mb-0.5">心血管疾病</strong>如：心臟病/瓣膜缺損/閉鎖不全、心導管/支架、心絞痛/心肌梗塞、高低血壓</span>
-              </label>
+            <p class="font-semibold text-slate-700 mb-2">請確認您是否有相關狀況（勾選後可填寫詳細說明）：</p>
+            <div class="space-y-3 text-xs">
+              
+              <!-- 1. 心血管疾病 -->
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60 transition">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                  <input type="checkbox" class="med-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0" data-target="detail-cardio">
+                  <span><strong class="text-slate-800 text-sm block mb-0.5">心血管疾病</strong>如：心臟病/瓣膜缺損/閉鎖不全、心導管/支架、心絞痛/心肌梗塞、高低血壓</span>
+                </label>
+                <div id="detail-cardio" class="hidden mt-2.5 pl-7">
+                  <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫心血管疾病詳細說明（例如：高血壓服藥控制中）">
+                </div>
+              </div>
 
-              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
-                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
-                <span><strong class="text-slate-800 text-sm block mb-0.5">代謝性疾病</strong>如：糖尿病、甲狀腺功能亢進/低下</span>
-              </label>
+              <!-- 2. 代謝性疾病 -->
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60 transition">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                  <input type="checkbox" class="med-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0" data-target="detail-metabolic">
+                  <span><strong class="text-slate-800 text-sm block mb-0.5">代謝性疾病</strong>如：糖尿病、甲狀腺功能亢進/低下</span>
+                </label>
+                <div id="detail-metabolic" class="hidden mt-2.5 pl-7">
+                  <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫代謝性疾病詳細說明（例如：第二型糖尿病）">
+                </div>
+              </div>
 
-              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
-                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
-                <span><strong class="text-slate-800 text-sm block mb-0.5">自體免疫疾病</strong>如：紅斑性狼瘡、風溼性關節炎、乾燥症、器官移植等</span>
-              </label>
+              <!-- 3. 自體免疫疾病 -->
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60 transition">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                  <input type="checkbox" class="med-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0" data-target="detail-autoimmune">
+                  <span><strong class="text-slate-800 text-sm block mb-0.5">自體免疫疾病</strong>如：紅斑性狼瘡、風溼性關節炎、乾燥症、器官移植等</span>
+                </label>
+                <div id="detail-autoimmune" class="hidden mt-2.5 pl-7">
+                  <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫自體免疫疾病詳細說明">
+                </div>
+              </div>
 
-              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
-                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
-                <span><strong class="text-slate-800 text-sm block mb-0.5">血液相關疾病</strong>如：凝血功能異常、貧血、蠶豆症等</span>
-              </label>
+              <!-- 4. 血液相關疾病 -->
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60 transition">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                  <input type="checkbox" class="med-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0" data-target="detail-blood">
+                  <span><strong class="text-slate-800 text-sm block mb-0.5">血液相關疾病</strong>如：凝血功能異常、貧血、蠶豆症等</span>
+                </label>
+                <div id="detail-blood" class="hidden mt-2.5 pl-7">
+                  <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫血液疾病詳細說明">
+                </div>
+              </div>
 
-              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
-                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
-                <span><strong class="text-slate-800 text-sm block mb-0.5">臟器疾病</strong>如：胃/十二指腸潰瘍、腎臟疾病、透析(洗腎)</span>
-              </label>
+              <!-- 5. 臟器疾病 -->
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60 transition">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                  <input type="checkbox" class="med-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0" data-target="detail-organ">
+                  <span><strong class="text-slate-800 text-sm block mb-0.5">臟器疾病</strong>如：胃/十二指腸潰瘍、腎臟疾病、透析(洗腎)</span>
+                </label>
+                <div id="detail-organ" class="hidden mt-2.5 pl-7">
+                  <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫臟器疾病詳細說明">
+                </div>
+              </div>
 
-              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60">
-                <label class="flex items-center space-x-3 cursor-pointer">
-                  <input type="checkbox" class="w-4 h-4 text-sky-600 shrink-0">
+              <!-- 6. 良/惡性腫瘤(癌症) -->
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60 transition">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                  <input type="checkbox" class="med-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0" data-target="detail-tumor">
                   <span class="text-slate-800 text-sm font-bold">良/惡性腫瘤(癌症)</span>
                 </label>
-                <div class="mt-2 pl-7">
+                <div id="detail-tumor" class="hidden mt-2.5 pl-7">
                   <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請註明部位或病名">
                 </div>
               </div>
 
-              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
-                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
-                <span><strong class="text-slate-800 text-sm block mb-0.5">傳染性疾病</strong>如：肺結核、ABCD型肝炎、人類乳突病毒(HPV)、人類免疫缺乏病毒(HIV)等</span>
-              </label>
+              <!-- 7. 傳染性疾病 -->
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60 transition">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                  <input type="checkbox" class="med-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0" data-target="detail-infectious">
+                  <span><strong class="text-slate-800 text-sm block mb-0.5">傳染性疾病</strong>如：肺結核、ABCD型肝炎、人類乳突病毒(HPV)、人類免疫缺乏病毒(HIV)等</span>
+                </label>
+                <div id="detail-infectious" class="hidden mt-2.5 pl-7">
+                  <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫傳染性疾病詳細說明">
+                </div>
+              </div>
 
-              <label class="p-3 border border-slate-200 rounded-xl flex items-start space-x-3 hover:border-sky-400 bg-slate-50/60 cursor-pointer">
-                <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
-                <span><strong class="text-slate-800 text-sm block mb-0.5">其他頭頸部相關疾病</strong>如：鼻竇炎、口腔黏膜異常、口乾症、張口受限、顳顎關節疾病等</span>
-              </label>
+              <!-- 8. 其他頭頸部相關疾病 -->
+              <div class="p-3 border border-slate-200 rounded-xl hover:border-sky-400 bg-slate-50/60 transition">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                  <input type="checkbox" class="med-checkbox mt-0.5 w-4 h-4 text-sky-600 shrink-0" data-target="detail-headneck">
+                  <span><strong class="text-slate-800 text-sm block mb-0.5">其他頭頸部相關疾病</strong>如：鼻竇炎、口腔黏膜異常、口乾症、張口受限、顳顎關節疾病等</span>
+                </label>
+                <div id="detail-headneck" class="hidden mt-2.5 pl-7">
+                  <input type="text" class="w-full p-2 border border-slate-300 rounded-lg bg-white text-xs focus:ring-2 focus:ring-sky-500 outline-none" placeholder="請填寫頭頸部疾病詳細說明">
+                </div>
+              </div>
+
             </div>
           </div>
 
           <div class="pt-2 border-t border-slate-100">
-            <p class="font-semibold text-slate-700 mb-2">日常習慣：</p>
+            <p class="font-semibold text-slate-700 mb-2">日常健康習慣：</p>
             <div class="grid grid-cols-3 gap-2 text-xs">
               <label class="p-2.5 border border-slate-200 rounded-lg flex items-center justify-center space-x-2 bg-slate-50 hover:bg-sky-50 cursor-pointer">
                 <input type="checkbox" class="w-4 h-4 text-sky-600">
@@ -279,7 +324,7 @@
       <!-- STEP 4: 就診心理狀態與電子簽名 -->
       <!-- ========================================== -->
       <div class="step-pane hidden" data-step="4">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 需求評估及電子簽名</h2>
+        <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">4. 就診心理狀態</h2>
         
         <div class="space-y-5 text-sm">
           <div>
@@ -291,7 +336,6 @@
             </div>
           </div>
 
-          <!-- 過去就診不愉快經驗 -->
           <div>
             <label class="block font-medium text-slate-700 mb-2">過去就診不愉快經驗（可複選）：</label>
             <div class="grid grid-cols-2 gap-2 text-xs">
@@ -328,7 +372,7 @@
 
           <label class="flex items-center space-x-2 text-xs font-medium cursor-pointer pt-2 border-t">
             <input type="checkbox" required class="w-4 h-4 text-sky-600">
-            <span>本人同意接受全口數位 X 光攝影檢查（初診及全口檢查已逾2年者由健保給付，無額外費用）</span>
+            <span>本人同意接受全口數位 X 光攝影檢查（健保給付）</span>
           </label>
 
           <!-- 簽名畫布區 -->
@@ -399,7 +443,6 @@
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // 簽名板位於第 4 步，切換到第 4 步時重新調整畫布尺寸
       if (targetStep === 4 && signaturePad) {
         setTimeout(resizeCanvas, 50);
       }
@@ -458,6 +501,25 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       initSignaturePad();
+
+      // 第 2 頁醫療病史勾選連動顯示輸入框邏輯
+      document.querySelectorAll('.med-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+          const targetId = e.target.getAttribute('data-target');
+          const detailBox = document.getElementById(targetId);
+          if (detailBox) {
+            if (e.target.checked) {
+              detailBox.classList.remove('hidden');
+              const input = detailBox.querySelector('input');
+              if (input) input.focus();
+            } else {
+              detailBox.classList.add('hidden');
+              const input = detailBox.querySelector('input');
+              if (input) input.value = ''; // 取消勾選時清空內容
+            }
+          }
+        });
+      });
 
       const clearBtn = document.getElementById('clearBtn');
       if (clearBtn) {
