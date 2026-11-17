@@ -185,7 +185,7 @@
             </div>
         </article>
         地址:
-        <input type="text" name="address" id="address" style="width:100%" />
+        <input type="text" name="Address" id="Address" style="width:100%" />
         <button onclick=PostAddress()>確認</button>
     </section>
 
@@ -238,10 +238,7 @@
         }
         function domIndexPreset() {
             domIndexes.empty();
-            domIndexes.append($('<option>', {
-                text: "(注音篩選)"
-            }));
-
+            domIndexes.append($('<option>', { value: "", text: "(注音篩選)" }));
         }
         function storageAvailable(type) {
             let storage;
@@ -263,9 +260,7 @@
         }
         function domRoadPreset() {
             domRoads.empty();
-            domRoads.append($('<option>', {
-                text: "(路 \ 街 \ 道 \ 村 \ 里)"
-            }));
+            domRoads.append($('<option>', { value: "", text: "(路 \\ 街 \\ 道 \\ 村 \\ 里)" }));
         }
         function GetDistricts() {
             var city = $("#Cities").val();
@@ -295,22 +290,18 @@
         //        GetRoads();
         //    });
         }
+
         function ParseCityData(y) {
             cityJSON = y;
             var city = $("#Cities").val();
             var districts = Object.keys(cityJSON[city]);
-
             domAreaPreset();
             domIndexPreset();
             domRoadPreset();
             districts.forEach(function (x) {
-                domAreas.append($('<option>', {
-                    value: x,
-                    text: x
-                }));
+                domAreas.append($('<option>', { value: x, text: x }));
             });
-            GetIndexes();
-            GetRoads();
+            GetIndexes(); // Also calls GetRoads() -> ConcatAddress()
         }
         function GetIndexes() {
             var city = $("#Cities").val();
@@ -334,29 +325,23 @@
             var city = $("#Cities").val();
             var district = $("#Areas").val();
             var index = $("#Phonetics").val();
-            console.log("index:" + index + typeof (index));
             var roadsArray = [];
-            if (index == "(注音篩選)") {
-                console.log("no filtering");
-                console.log(cityJSON[city][district]);
+        
+            if (!index || index === "(注音篩選)") {
                 var keys = Object.keys(cityJSON[city][district]);
                 for (var i = 0; i < keys.length; i++) {
                     cityJSON[city][district][keys[i]].forEach(x => roadsArray.push(x));
                 }
-            }
-            else {
-                console.log("filtered:" + index);
+            } else {
                 roadsArray = cityJSON[city][district][index];
             }
-
-            console.log(roadsArray);
+        
             domRoads.empty();
             roadsArray.forEach(function (x) {
-                domRoads.append($('<option>', {
-                    value: x,
-                    text: x
-                }));
+                domRoads.append($('<option>', { value: x, text: x }));
             });
+        
+            ConcatAddress(); // Ensure #address updates whenever roads are rebuilt
         }
         $(function () {
             $("input#address").css("width", "100%");
