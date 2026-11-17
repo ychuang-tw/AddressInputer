@@ -370,10 +370,25 @@
             </div>
           </div>
 
-          <label class="flex items-center space-x-2 text-xs font-medium cursor-pointer pt-2 border-t">
-            <input type="checkbox" class="w-4 h-4 text-sky-600">
-            <span>本人同意接受全口數位 X 光攝影檢查（健保給付）</span>
-          </label>
+          <!-- 同意事項區 -->
+          <div class="space-y-3 pt-3 border-t border-slate-200">
+            <!-- 非必填：X光檢查同意 -->
+            <label class="flex items-start space-x-2.5 text-xs font-medium text-slate-700 cursor-pointer">
+              <input type="checkbox" class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+              <span>本人同意接受全口數位 X 光攝影檢查（健保給付）</span>
+            </label>
+
+            <!-- 必填：個人資料處理運用聲明 -->
+            <div class="p-3 bg-sky-50/70 border border-sky-200 rounded-xl">
+              <label class="flex items-start space-x-2.5 text-xs text-slate-800 cursor-pointer">
+                <input type="checkbox" required class="mt-0.5 w-4 h-4 text-sky-600 shrink-0">
+                <span class="leading-relaxed">
+                  <strong class="text-sky-900">個人資料處理運用聲明 <span class="text-red-500">*</span></strong><br>
+                  本人已詳閱並同意博識牙醫診所依據個人資料保護法之規定，於醫療服務、病歷管理、健保申報及相關就診聯繫之特定目的範圍內，蒐集、處理及利用本人所填寫之個人資料與健康資訊。
+                </span>
+              </label>
+            </div>
+          </div>
 
           <!-- 簽名畫布區 -->
           <div>
