@@ -599,20 +599,175 @@
 
       const form = document.getElementById('intakeForm');
       if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
           e.preventDefault();
           if (!signaturePad || signaturePad.isEmpty()) {
             alert('請先完成病患簽名後再送出！');
             return;
           }
+        
+          // 若後端只要純 Base64 字串（不含 "data:image/png;base64," 前綴），可將第二個參數改為 true
           const dataUrl = signaturePad.toDataURL('image/png');
-          console.log('簽名圖片資料 (Base64):', dataUrl);
-          alert('初診表單已成功送出！');
+          const payload = collectFormAsJson(dataUrl, false);
+        
+          try {
+            await postJsonAsForm(SUBMIT_ENDPOINT, payload);
+            alert('初診表單已成功送出！');
+          } catch (err) {
+            console.error('送出失敗：', err);
+            alert('表單送出失敗，請稍後再試或洽櫃檯人員。');
+          }
         });
       }
     });
-
     window.addEventListener('resize', resizeCanvas);
+
+    const SUBMIT_ENDPOINT = 'https://your-endpoint.example.com/api/intake';
+    
+    function collectFormAsJson(signatureDataUrl, pureBase64 = false) {
+      const step1 = document.querySelector('[data-step="1"]');
+      const step1Inputs = step1.querySelectorAll('input, select');
+    
+      // 第 2 頁：8 項醫療病史
+      const conditionDefs = [
+        { key: 'cardiovascular', label: '心血管疾病', detailId: 'detail-cardio' },
+        { key: 'metabolic', label: '代謝性疾病', detailId: 'detail-metabolic' },
+        { key: 'autoimmune', label: '自體免疫疾病', detailId: 'detail-autoimmune' },
+        { key: 'blood', label: '血液相關疾病', detailId: 'detail-blood' },
+        { key: 'organ', label: '臟器疾病', detailId: 'detail-organ' },
+        { key: 'tumor', label: '良/惡性腫瘤(癌症)', detailId: 'detail-tumor' },
+        { key: 'infectious', label: '傳染性疾病', detailId: 'detail-infectious' },
+        { key: 'headNeck', label: '其他頭頸部相關疾病', detailId: 'detail-headneck' }
+      ];
+    
+      const medCheckboxes = Array.from(document.querySelectorAll('.med-checkbox'));
+      const conditions = conditionDefs.map((def, idx) => {
+        const cb = medCheckboxes[idx];
+        const detailInput = document.querySelector(`#${def.detailId} input`);
+        return {
+          key: def.key,
+          label: def.label,
+          checked: !!(cb && cb.checked),
+          detail: detailInput ? detailInput.value.trim() : ''
+        };
+      });
+    
+      const step2 = document.querySelector('[data-step="2"]');
+      const habitCheckboxes = step2.querySelectorAll('.grid-cols-3 input[type="checkbox"]');
+      const surgeryInput = step2.querySelector('input[type="text"]:not([id^="detail-"] input)');
+      const pregnancyCheckbox = step2.querySelector('.bg-pink-50\\/70 input[type="checkbox"]');
+      const pregnancyWeeksInput = step2.querySelector('.bg-pink-50\\/70 input[type="number"]');
+    
+      // 第 3 頁：醫療安全關鍵確認 & 藥物過敏史
+      const step3 = document.querySelector('[data-step="3"]');
+      const criticalChecks = Array.from(document.querySelectorAll('.safety-checkbox')).map(cb => ({
+        label: cb.nextElementSibling ? cb.nextElementSibling.textContent.trim() : '',
+        checked: cb.checked
+      }));
+      const criticalDetailInput = document.querySelector('#safety-detail-box input');
+    
+      const allergyLabels = step3.querySelectorAll('.space-y-3 .grid-cols-2 label');
+      const drugAllergies = Array.from(allergyLabels).map(lbl => {
+        const cb = lbl.querySelector('input[type="checkbox"]');
+        const span = lbl.querySelector('span');
+        return {
+          label: span ? span.textContent.trim() : '',
+          checked: !!(cb && cb.checked)
+        };
+      });
+    
+      const otherAllergyBox = step3.querySelector('.space-y-3 > div.p-3');
+      const otherAllergyCb = otherAllergyBox ? otherAllergyBox.querySelector('input[type="checkbox"]') : null;
+      const otherAllergyInput = otherAllergyBox ? otherAllergyBox.querySelector('input[type="text"]') : null;
+    
+      // 第 4 頁：就診心理狀態、同意事項與簽名
+      const step4 = document.querySelector('[data-step="4"]');
+      const mentalStates = Array.from(step4.querySelectorAll('.flex-wrap input[type="checkbox"]:checked'))
+        .map(cb => cb.parentElement.textContent.trim());
+    
+      const unpleasantExperiences = Array.from(step4.querySelectorAll('.grid-cols-2 input[type="checkbox"]:checked'))
+        .map(cb => cb.nextElementSibling ? cb.nextElementSibling.textContent.trim() : '');
+    
+      const otherExpContainer = unpleasantExperiences.length >= 0 ? step4.querySelectorAll('div.p-3.border.border-slate-200.rounded-lg')[1] : null;
+      const otherExpCb = otherExpContainer ? otherExpContainer.querySelector('input[type="checkbox"]') : null;
+      const otherExpInput = otherExpContainer ? otherExpContainer.querySelector('input[type="text"]') : null;
+    
+      const consentCheckboxes = step4.querySelectorAll('.space-y-3.pt-3 input[type="checkbox"]');
+      const signatureValue = pureBase64
+        ? signatureDataUrl.replace(/^data:image\/png;base64,/, '')
+        : signatureDataUrl;
+    
+      return {
+        clinic: '博識牙醫診所',
+        submittedAt: new Date().toISOString(),
+        basicInfo: {
+          fullName: step1Inputs[0]?.value.trim() || '',
+          nationalId: step1Inputs[1]?.value.trim() || '',
+          gender: step1Inputs[2]?.value || '',
+          birthDate: step1Inputs[3]?.value || '',
+          mobilePhone: step1Inputs[4]?.value.trim() || '',
+          email: step1Inputs[5]?.value.trim() || '',
+          companyOrOccupation: step1Inputs[6]?.value.trim() || '',
+          address: document.getElementById('addressInput')?.value.trim() || ''
+        },
+        medicalHistory: {
+          conditions,
+          habits: {
+            smoking: !!habitCheckboxes[0]?.checked,
+            drinking: !!habitCheckboxes[1]?.checked,
+            betelNut: !!habitCheckboxes[2]?.checked
+          },
+          surgeryOrHospitalization: {
+            reason: surgeryInput ? surgeryInput.value.trim() : ''
+          },
+          pregnancy: {
+            isPregnant: !!pregnancyCheckbox?.checked,
+            weeks: pregnancyWeeksInput && pregnancyWeeksInput.value !== ''
+              ? Number(pregnancyWeeksInput.value)
+              : null
+          }
+        },
+        medicationSafety: {
+          criticalChecks,
+          criticalDetail: criticalDetailInput ? criticalDetailInput.value.trim() : '',
+          drugAllergies,
+          otherAllergy: {
+            checked: !!otherAllergyCb?.checked,
+            detail: otherAllergyInput ? otherAllergyInput.value.trim() : ''
+          }
+        },
+        psychologyAndConsent: {
+          mentalStates,
+          unpleasantExperiences,
+          otherExperience: {
+            checked: !!otherExpCb?.checked,
+            detail: otherExpInput ? otherExpInput.value.trim() : ''
+          },
+          agreeXray: !!consentCheckboxes[0]?.checked,
+          agreePrivacyPolicy: !!consentCheckboxes[1]?.checked,
+          signatureBase64: signatureValue
+        }
+      };
+    }
+    
+    // 送出函式：以 application/x-www-form-urlencoded (Form POST) 傳送 JSON 字串
+    async function postJsonAsForm(url, jsonPayload) {
+      const body = new URLSearchParams();
+      body.append('payload', JSON.stringify(jsonPayload));
+    
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: body.toString()
+      });
+    
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      return response;
+    }
   </script>
 </body>
 </html>
